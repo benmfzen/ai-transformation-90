@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  prototype:
+    name: CS Copilot — tests & eval gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: pip install pytest && python -m pytest prototypes/cs-copilot/tests/ -q
+      - name: Eval harness (quality gates)
+        run: python prototypes/cs-copilot/eval/run_eval.py
+
+  links:
+    name: Markdown link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify relative links resolve
+        run: |
+          python3 - <<'EOF'
+          import re, os, glob, sys
+          bad = 0
+          for f in glob.glob('**/*.md', recursive=True):
+              base = os.path.dirname(f)
+              for m in re.finditer(r'\]\(([^)#]+?)(#[^)]*)?\)', open(f).read()):
+                  t = m.group(1)
+                  if t.startswith(('http', 'mailto')):
+                      continue
+                  if not os.path.exists(os.path.normpath(os.path.join(base, t))):
+                      print(f"BROKEN {f}: {t}")
+                      bad += 1
+          sys.exit(1 if bad else 0)
+          EOF
