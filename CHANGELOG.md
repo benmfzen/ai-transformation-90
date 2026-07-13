@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.2.1 — 2026-07-13
+
+Closes the "instruction without artifact" gaps: every playbook to-do now has a fill-in template behind it.
+
+- **Kick-off agenda** (day 1, 60 min) — agenda, 8-slide deck outline, the three commitments that must be secured in the room, warning signs
+- **Decision memo template** (day 30/60/90) — the 3-page result/plan/budget structure with per-milestone fill guidance and checkbox resolutions ("acknowledged" is not an outcome)
+- **Training curriculum** — the 3-tier program (2h all-hands / 1-day rollout teams / champions) with block-level content; covers the EU AI Act Art. 4 literacy duty
+- **Tool clearance checklist** — 30–60 min sign-off across need, privacy/legal (DPA, training-use, data classes), security (SSO, audit log), and operations (TCO, exit path, eval hook)
+- **KPI definition sheet** — value / adoption / quality KPIs, each with formula, source, owner, cadence; "time saved counts only when its destination is documented"
+- All five linked from the matching playbook to-dos
+
 ## v0.2.0 — 2026-07-13
 
 The repo grows from a methodology showcase into a work sample for a Principal AI Transformation role in a consumer/e-commerce company.

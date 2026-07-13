@@ -44,7 +44,9 @@ cases/
   nordwerk/     DE track: 9 department profiles, impact matrix
 prototypes/
   cs-copilot/   working code: grounded CS drafts, escalation rules, eval gates
-templates/      interview guide, use-case canvas, pilot charter, status report (DE)
+templates/      9 fill-in artifacts (DE): interview guide, use-case canvas, pilot
+                charter, status report, kick-off agenda, day-30/60/90 decision
+                memo, training curriculum, tool clearance checklist, KPI sheet
 governance/     AI policy — guardrails, EU AI Act red lines (DE)
 decisions/      architecture decision records
 docs/           interactive dashboard (GitHub Pages)
