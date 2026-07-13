@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NORDWERK · AI-Transformation in 90 Tagen — Dashboard</title>
+<style>
+  :root {
+    --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+    --series:#2a78d6; --accent:#1c5cab;
+    --ord1:#86b6ef; --ord2:#3987e5; --ord3:#1c5cab;
+    --seq1:#cde2fb; --seq2:#9ec5f4; --seq3:#5598e7; --seq4:#2a78d6; --seq5:#0d366b;
+    --ink-on-seq4:#ffffff; --ink-on-seq5:#ffffff; --ink-on-seq1:#0b0b0b; --ink-on-seq2:#0b0b0b; --ink-on-seq3:#0b0b0b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+      --series:#3987e5; --accent:#6da7ec;
+      --ord1:#6da7ec; --ord2:#3987e5; --ord3:#184f95;
+      --seq1:#0d366b; --seq2:#104281; --seq3:#1c5cab; --seq4:#3987e5; --seq5:#86b6ef;
+      --ink-on-seq1:#ffffff; --ink-on-seq2:#ffffff; --ink-on-seq3:#ffffff; --ink-on-seq4:#ffffff; --ink-on-seq5:#0b0b0b;
+    }
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--page); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.5; padding:32px 16px 64px; }
+  .wrap { max-width:1080px; margin:0 auto; }
+  header h1 { font-size:1.6rem; letter-spacing:-.01em; }
+  header .sub { color:var(--ink2); margin-top:4px; max-width:64ch; }
+  .badge { display:inline-block; font-size:.72rem; color:var(--ink2); border:1px solid var(--border); border-radius:99px; padding:2px 10px; margin-top:10px; }
+  .badge a, .foot a { color:var(--accent); }
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:24px 0; }
+  .tile { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+  .tile .v { font-size:1.9rem; font-weight:650; letter-spacing:-.02em; }
+  .tile .l { font-size:.8rem; color:var(--ink2); margin-top:2px; }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin:20px 0; }
+  .card h2 { font-size:1.05rem; margin-bottom:2px; }
+  .card .hint { font-size:.82rem; color:var(--ink2); margin-bottom:14px; }
+  svg text { font-family:system-ui,-apple-system,"Segoe UI",sans-serif; }
+  .scroll { overflow-x:auto; }
+  /* timeline */
+  .tl { display:flex; gap:2px; height:38px; border-radius:8px; overflow:hidden; min-width:520px; }
+  .tl div { display:flex; align-items:center; justify-content:center; color:#fff; font-size:.8rem; font-weight:600; }
+  .tl .p1 { flex:30; background:var(--ord1); color:#0b0b0b; }
+  .tl .p2 { flex:30; background:var(--ord2); }
+  .tl .p3 { flex:30; background:var(--ord3); }
+  @media (prefers-color-scheme: dark) { .tl .p1 { color:#0b0b0b; } }
+  .tl-marks { display:flex; min-width:520px; font-size:.72rem; color:var(--muted); margin-top:4px; }
+  .tl-marks span { flex:1; } .tl-marks span:last-child { text-align:right; flex:0; }
+  .tl-desc { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; font-size:.82rem; color:var(--ink2); min-width:520px; }
+  .tl-desc b { color:var(--ink); display:block; font-size:.85rem; }
+  /* heatmap + table */
+  table { border-collapse:separate; border-spacing:2px; font-size:.83rem; min-width:640px; }
+  th { color:var(--ink2); font-weight:600; text-align:left; padding:6px 8px; font-size:.78rem; }
+  th.c, td.c { text-align:center; }
+  td { padding:6px 8px; }
+  td.name { color:var(--ink); white-space:nowrap; }
+  td.cell { width:72px; text-align:center; border-radius:4px; font-variant-numeric:tabular-nums; font-weight:600; cursor:default; }
+  td.avg { font-weight:700; font-variant-numeric:tabular-nums; text-align:center; }
+  .legend { display:flex; align-items:center; gap:6px; font-size:.75rem; color:var(--ink2); margin-top:12px; }
+  .legend i { width:22px; height:12px; border-radius:3px; display:inline-block; }
+  /* tooltip */
+  #tip { position:fixed; pointer-events:none; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:8px 12px; font-size:.8rem; box-shadow:0 4px 16px rgba(0,0,0,.18); opacity:0; transition:opacity .1s; max-width:260px; z-index:10; }
+  #tip b { display:block; } #tip .m { color:var(--ink2); }
+  details { margin-top:14px; } summary { cursor:pointer; font-size:.85rem; color:var(--accent); }
+  .foot { color:var(--muted); font-size:.78rem; margin-top:28px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>AI-Transformation in 90 Tagen — NORDWERK GmbH</h1>
+    <p class="sub">Programm-Dashboard des Showcase-Projekts: Impact-/Readiness-Scoring aller 9 Abteilungen, Champion-Auswahl und Phasenplan.</p>
+    <span class="badge">Fiktiver Case · Methodik &amp; Daten im <a href="https://github.com/benmfzen/ai-transformation-90">Repo</a></span>
+  </header>
+
+  <div class="tiles">
+    <div class="tile"><div class="v">520</div><div class="l">Mitarbeitende</div></div>
+    <div class="tile"><div class="v">9</div><div class="l">Abteilungen gescort</div></div>
+    <div class="tile"><div class="v">3</div><div class="l">Piloten (Tag 31–60)</div></div>
+    <div class="tile"><div class="v">2</div><div class="l">Champions identifiziert</div></div>
+    <div class="tile"><div class="v">90</div><div class="l">Tage bis zur Vorstandsentscheidung</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Impact-/Readiness-Matrix</h2>
+    <p class="hint">Jeder Punkt eine Abteilung (Hover für Details). Rechts oben wird pilotiert; links oben ist Hebel ohne Reife — dort wird erst Datenbasis aufgebaut.</p>
+    <div class="scroll"><svg id="scatter" viewBox="0 0 760 480" style="min-width:560px;width:100%;height:auto" role="img" aria-label="Streudiagramm Impact gegen Readiness für 9 Abteilungen"></svg></div>
+  </div>
+
+  <div class="card">
+    <h2>Scoring-Heatmap — 6 Dimensionen × 9 Abteilungen</h2>
+    <p class="hint">Skala 1–5. Impact = Repetitivität · Schmerz · Hebel — Readiness = Datenlage · Bereitschaft · Freiheit. Belege je Score in den Abteilungsprofilen im Repo.</p>
+    <div class="scroll"><table id="heat"></table></div>
+    <div class="legend">niedrig <i style="background:var(--seq1)"></i><i style="background:var(--seq2)"></i><i style="background:var(--seq3)"></i><i style="background:var(--seq4)"></i><i style="background:var(--seq5)"></i> hoch</div>
+    <details>
+      <summary>Datentabelle (barrierefreie Ansicht)</summary>
+      <div class="scroll"><table id="plain" style="margin-top:10px"></table></div>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2>Der 90-Tage-Plan</h2>
+    <p class="hint">Drei Phasen, drei Entscheidungspunkte — an Tag 30, 60 und 90 entscheidet die Geschäftsführung auf Basis von Daten.</p>
+    <div class="scroll">
+      <div class="tl"><div class="p1">Phase 1 · Verstehen</div><div class="p2">Phase 2 · Pilotieren</div><div class="p3">Phase 3 · Skalieren</div></div>
+      <div class="tl-marks"><span>Tag 1</span><span>Tag 30 · Pilotauswahl</span><span>Tag 60 · Pilot-Review</span><span>Tag 90 · Entscheidung</span></div>
+      <div class="tl-desc">
+        <div><b>Org-Scan &amp; Scoring</b>9 Head-Interviews, Impact-Matrix, Champion-Shortlist</div>
+        <div><b>3 Piloten mit Charter</b>Kundenservice, Vertrieb, Finanzen — Baseline, Zielmetrik, Abbruchkriterium</div>
+        <div><b>Rollout &amp; Betriebsmodell</b>Governance, Hub-and-Spoke, 12-Monats-Roadmap</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="foot">Showcase von <a href="https://github.com/benmfzen">Benjamin Zengler</a> · Firma, Personen und Zahlen sind fiktiv · Playbook, Scoring-Modell und Templates: <a href="https://github.com/benmfzen/ai-transformation-90">github.com/benmfzen/ai-transformation-90</a></p>
+</div>
+<div id="tip"></div>
+
+<script>
+const DEPTS = [
+  // [name, head, MA, rep, schmerz, hebel, daten, bereit, frei, rolle]
+  ["Kundenservice","Sandra Steiger",41,5,5,4,4,5,4,"🏆 Pilot P1 — Champion"],
+  ["Vertrieb & Angebote","Markus Held",38,4,4,5,3,5,3,"Pilot P2 — Champion"],
+  ["Produktion","Bernd Kowalski",260,3,4,5,1,2,2,"Vorprojekt Daten, dann Q3"],
+  ["Finanzen & Controlling","Dr. Anja Feld",21,5,3,3,5,3,4,"Pilot P3"],
+  ["Einkauf","Ali Özdemir",17,4,3,3,3,3,4,"Welle 2 (Q1)"],
+  ["Logistik","Petra Nowak",54,4,3,3,3,2,3,"Welle 2 (Q1/Q2)"],
+  ["Marketing","Julia Brandt",9,3,2,3,3,5,5,"Welle 2 — Quick Wins"],
+  ["IT","Tobias Renner",14,2,3,3,4,4,3,"Enabler / AI-Office-Partner"],
+  ["Personal","Christine Weber",12,3,2,2,3,3,1,"Q3 · AI-Act-Scope"]
+];
+const avg = a => a.reduce((x,y)=>x+y,0)/a.length;
+const f1 = n => n.toFixed(1).replace(".",",");
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+const tip = document.getElementById("tip");
+function showTip(html, e){ tip.innerHTML = html; tip.style.opacity = 1;
+  const x = Math.min(e.clientX+14, innerWidth-280), y = Math.min(e.clientY+14, innerHeight-120);
+  tip.style.left = x+"px"; tip.style.top = y+"px"; }
+function hideTip(){ tip.style.opacity = 0; }
+
+/* ---------- Scatter ---------- */
+function drawScatter(){
+  const svg = document.getElementById("scatter"); svg.innerHTML = "";
+  const W=760,H=480, m={l:56,r:16,t:20,b:46};
+  const X = v => m.l + (v-1)/4*(W-m.l-m.r);
+  const Y = v => H-m.b - (v-1)/4*(H-m.t-m.b);
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e;};
+  const grid=css("--grid"), axis=css("--axis"), muted=css("--muted"), ink2=css("--ink2"),
+        series=css("--series"), surface=css("--surface");
+  // grid + ticks
+  for(let v=1;v<=5;v++){
+    el("line",{x1:X(v),y1:m.t,x2:X(v),y2:H-m.b,stroke:grid,"stroke-width":1});
+    el("line",{x1:m.l,y1:Y(v),x2:W-m.r,y2:Y(v),stroke:grid,"stroke-width":1});
+    el("text",{x:X(v),y:H-m.b+18,fill:muted,"font-size":11,"text-anchor":"middle"}).textContent=v;
+    el("text",{x:m.l-10,y:Y(v)+4,fill:muted,"font-size":11,"text-anchor":"end"}).textContent=v;
+  }
+  // quadrant threshold lines (Readiness 3 / Impact 3,5)
+  el("line",{x1:X(3),y1:m.t,x2:X(3),y2:H-m.b,stroke:axis,"stroke-width":1.5,"stroke-dasharray":"5 4"});
+  el("line",{x1:m.l,y1:Y(3.5),x2:W-m.r,y2:Y(3.5),stroke:axis,"stroke-width":1.5,"stroke-dasharray":"5 4"});
+  // quadrant labels
+  const q=(x,y,t)=>{const e=el("text",{x,y,fill:muted,"font-size":11,"font-weight":600});e.textContent=t;};
+  q(m.l+8,m.t+14,"⚠️ AUFBAUEN"); q(X(3)+10,m.t+14,"🚀 JETZT PILOTIEREN");
+  q(m.l+8,H-m.b-12,"💤 SPÄTER"); q(X(3)+10,H-m.b-12,"⚡ QUICK WINS / ENABLER");
+  // axes
+  el("line",{x1:m.l,y1:H-m.b,x2:W-m.r,y2:H-m.b,stroke:axis,"stroke-width":1.5});
+  el("line",{x1:m.l,y1:m.t,x2:m.l,y2:H-m.b,stroke:axis,"stroke-width":1.5});
+  el("text",{x:(m.l+W-m.r)/2,y:H-8,fill:ink2,"font-size":12,"text-anchor":"middle"}).textContent="Readiness — geht es jetzt?";
+  const yl=el("text",{x:16,y:(m.t+H-m.b)/2,fill:ink2,"font-size":12,"text-anchor":"middle"});
+  yl.textContent="Impact — lohnt es sich?"; yl.setAttribute("transform",`rotate(-90 16 ${(m.t+H-m.b)/2})`);
+  // label offsets per dept to avoid collisions
+  const off={"Kundenservice":[10,-10],"Vertrieb & Angebote":[10,16],"Produktion":[10,-10],
+    "Finanzen & Controlling":[10,16],"Einkauf":[12,-10],"Logistik":[-12,4],
+    "Marketing":[10,4],"IT":[10,-10],"Personal":[10,4]};
+  const offAnchor={"Logistik":"end"};
+  DEPTS.forEach(d=>{
+    const imp=avg(d.slice(3,6)), rea=avg(d.slice(6,9));
+    const cx=X(rea), cy=Y(imp);
+    const c=el("circle",{cx,cy,r:9,fill:series,stroke:surface,"stroke-width":2,cursor:"pointer"});
+    const [dx,dy]=off[d[0]]||[10,4];
+    const t=el("text",{x:cx+dx,y:cy+dy,fill:ink2,"font-size":11.5,"font-weight":600,"text-anchor":offAnchor[d[0]]||"start"});
+    t.textContent=d[0];
+    const html=`<b>${d[0]}</b><span class="m">${d[1]} · ${d[2]} MA</span><br>Impact <b style="display:inline">${f1(imp)}</b> · Readiness <b style="display:inline">${f1(rea)}</b><br><span class="m">${d[9]}</span>`;
+    c.addEventListener("mousemove",e=>showTip(html,e));
+    c.addEventListener("mouseleave",hideTip);
+  });
+}
+drawScatter();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{drawScatter();drawHeat();});
+
+/* ---------- Heatmap ---------- */
+const DIMS=["Repetitivität","Schmerz","Hebel","Datenlage","Bereitschaft","Freiheit"];
+function drawHeat(){
+  const seq=[css("--seq1"),css("--seq2"),css("--seq3"),css("--seq4"),css("--seq5")];
+  const inks=[css("--ink-on-seq1"),css("--ink-on-seq2"),css("--ink-on-seq3"),css("--ink-on-seq4"),css("--ink-on-seq5")];
+  const heat=document.getElementById("heat");
+  const sorted=[...DEPTS].sort((a,b)=>avg(b.slice(3,6))-avg(a.slice(3,6)));
+  let h=`<tr><th>Abteilung</th>${DIMS.map(d=>`<th class="c">${d}</th>`).join("")}<th class="c">Impact</th><th class="c">Readiness</th></tr>`;
+  sorted.forEach(d=>{
+    h+=`<tr><td class="name">${d[0]}</td>`;
+    for(let i=3;i<9;i++){const v=d[i];
+      h+=`<td class="cell" style="background:${seq[v-1]};color:${inks[v-1]}" data-d="${d[0]}" data-dim="${DIMS[i-3]}" data-v="${v}">${v}</td>`;}
+    h+=`<td class="avg">${f1(avg(d.slice(3,6)))}</td><td class="avg">${f1(avg(d.slice(6,9)))}</td></tr>`;
+  });
+  heat.innerHTML=h;
+  heat.querySelectorAll("td.cell").forEach(c=>{
+    c.addEventListener("mousemove",e=>showTip(`<b>${c.dataset.d}</b>${c.dataset.dim}: <b style="display:inline">${c.dataset.v}</b> / 5`,e));
+    c.addEventListener("mouseleave",hideTip);
+  });
+  // plain table
+  document.getElementById("plain").innerHTML =
+    `<tr><th>Abteilung</th><th>Head</th><th class="c">MA</th>${DIMS.map(d=>`<th class="c">${d}</th>`).join("")}<th class="c">Impact</th><th class="c">Readiness</th><th>Rolle</th></tr>`+
+    sorted.map(d=>`<tr><td>${d[0]}</td><td>${d[1]}</td><td class="c">${d[2]}</td>${d.slice(3,9).map(v=>`<td class="c">${v}</td>`).join("")}<td class="c">${f1(avg(d.slice(3,6)))}</td><td class="c">${f1(avg(d.slice(6,9)))}</td><td>${d[9]}</td></tr>`).join("");
+}
+drawHeat();
+</script>
+</body>
+</html>
