@@ -1,0 +1,115 @@
+# SINGLE SOURCE OF TRUTH for the NORDWERK case scores.
+# The dashboard (docs/data.js) and the score table in impact-matrix.md are
+# GENERATED from this file — edit here, then run: python3 tools/generate.py
+# CI fails if generated outputs are out of sync.
+#
+# Scoring rules (see methodik/champion-scoring.md): every score 1-5 needs
+# evidence from an interview, a metric or a system inspection.
+
+company:
+  name: NORDWERK GmbH
+  employees: 520
+  departments_scored: 9
+  pilots: 3
+  champions: 2
+  program_days: 90
+
+dimensions:
+  impact: [repetitiveness, pain, leverage]
+  readiness: [data, willingness, freedom]
+
+# quadrant thresholds (must match the dashboard's dashed lines)
+thresholds:
+  readiness: 3.0
+  impact: 3.5
+
+departments:
+  - id: customer-service
+    name: Customer Service
+    name_de: Kundenservice
+    lead: Sandra Steiger
+    staff: 41
+    scores: {repetitiveness: 5, pain: 5, leverage: 4, data: 4, willingness: 5, freedom: 4}
+    role: "🏆 Pilot P1 — champion"
+    role_de: "🏆 Pilot P1 — Champion"
+    profile: abteilungen/kundenservice.md
+
+  - id: sales
+    name: Sales & Quotations
+    name_de: Vertrieb & Angebote
+    lead: Markus Held
+    staff: 38
+    scores: {repetitiveness: 4, pain: 4, leverage: 5, data: 3, willingness: 5, freedom: 3}
+    role: "Pilot P2 — champion"
+    role_de: "Pilot P2 — Champion"
+    profile: abteilungen/vertrieb.md
+
+  - id: production
+    name: Production
+    name_de: Produktion
+    lead: Bernd Kowalski
+    staff: 260
+    scores: {repetitiveness: 3, pain: 4, leverage: 5, data: 1, willingness: 2, freedom: 2}
+    role: "Data groundwork first, then Q3"
+    role_de: "Vorprojekt Daten, dann Q3"
+    profile: abteilungen/produktion.md
+
+  - id: finance
+    name: Finance & Controlling
+    name_de: Finanzen & Controlling
+    lead: Dr. Anja Feld
+    staff: 21
+    scores: {repetitiveness: 5, pain: 3, leverage: 3, data: 5, willingness: 3, freedom: 4}
+    role: "Pilot P3"
+    role_de: "Pilot P3"
+    profile: abteilungen/finanzen.md
+
+  - id: purchasing
+    name: Purchasing
+    name_de: Einkauf
+    lead: Ali Özdemir
+    staff: 17
+    scores: {repetitiveness: 4, pain: 3, leverage: 3, data: 3, willingness: 3, freedom: 4}
+    role: "Wave 2 (Q1)"
+    role_de: "Welle 2 (Q1)"
+    profile: abteilungen/einkauf.md
+
+  - id: logistics
+    name: Logistics
+    name_de: Logistik
+    lead: Petra Nowak
+    staff: 54
+    scores: {repetitiveness: 4, pain: 3, leverage: 3, data: 3, willingness: 2, freedom: 3}
+    role: "Wave 2 (Q1/Q2)"
+    role_de: "Welle 2 (Q1/Q2)"
+    profile: abteilungen/logistik.md
+
+  - id: marketing
+    name: Marketing
+    name_de: Marketing
+    lead: Julia Brandt
+    staff: 9
+    scores: {repetitiveness: 3, pain: 2, leverage: 3, data: 3, willingness: 5, freedom: 5}
+    role: "Wave 2 — quick wins"
+    role_de: "Welle 2 — Quick Wins"
+    profile: abteilungen/marketing.md
+
+  - id: it
+    name: IT
+    name_de: IT
+    lead: Tobias Renner
+    staff: 14
+    scores: {repetitiveness: 2, pain: 3, leverage: 3, data: 4, willingness: 4, freedom: 3}
+    role: "Enabler / AI office partner"
+    role_de: "Enabler — Partner des AI-Office"
+    profile: abteilungen/it.md
+
+  - id: hr
+    name: HR
+    name_de: Personal
+    lead: Christine Weber
+    staff: 12
+    scores: {repetitiveness: 3, pain: 2, leverage: 2, data: 3, willingness: 3, freedom: 1}
+    role: "Q3 · narrow AI Act scope"
+    role_de: "Q3, AI-Act-Scope beachten"
+    profile: abteilungen/personal.md

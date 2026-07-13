@@ -6,7 +6,8 @@ Interaktive Version mit Tooltips: **[Dashboard](https://benmfzen.github.io/ai-tr
 
 Skala 1–5 · Herleitung und Belege je Score in den [Abteilungsprofilen](abteilungen/) · Methodik im [Scoring-Modell](../../methodik/champion-scoring.md)
 
-| Abteilung | Repetitivität | Schmerz | Hebel | **Impact** | Daten | Bereitschaft | Freiheit | **Readiness** |
+<!-- generated:scores:start (edit cases/nordwerk/org.yaml, then run tools/generate.py) -->
+| Abteilung | Repetitivität | Schmerz | Hebel | **Impact** | Datenlage | Bereitschaft | Freiheit | **Readiness** |
 |---|---|---|---|---|---|---|---|---|
 | Kundenservice | 5 | 5 | 4 | **4,7** | 4 | 5 | 4 | **4,3** |
 | Vertrieb & Angebote | 4 | 4 | 5 | **4,3** | 3 | 5 | 3 | **3,7** |
@@ -17,6 +18,7 @@ Skala 1–5 · Herleitung und Belege je Score in den [Abteilungsprofilen](abteil
 | Marketing | 3 | 2 | 3 | **2,7** | 3 | 5 | 5 | **4,3** |
 | IT | 2 | 3 | 3 | **2,7** | 4 | 4 | 3 | **3,7** |
 | Personal | 3 | 2 | 2 | **2,3** | 3 | 3 | 1 | **2,3** |
+<!-- generated:scores:end -->
 
 ## Die vier Quadranten
 

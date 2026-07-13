@@ -76,11 +76,11 @@
   </header>
 
   <div class="tiles">
-    <div class="tile"><div class="v">520</div><div class="l">Employees</div></div>
-    <div class="tile"><div class="v">9</div><div class="l">Departments scored</div></div>
-    <div class="tile"><div class="v">3</div><div class="l">Pilots (day 31–60)</div></div>
-    <div class="tile"><div class="v">2</div><div class="l">Champions identified</div></div>
-    <div class="tile"><div class="v">90</div><div class="l">Days to the board decision</div></div>
+    <div class="tile"><div class="v" id="m-employees"></div><div class="l">Employees</div></div>
+    <div class="tile"><div class="v" id="m-departments"></div><div class="l">Departments scored</div></div>
+    <div class="tile"><div class="v" id="m-pilots"></div><div class="l">Pilots (day 31–60)</div></div>
+    <div class="tile"><div class="v" id="m-champions"></div><div class="l">Champions identified</div></div>
+    <div class="tile"><div class="v" id="m-days"></div><div class="l">Days to the board decision</div></div>
   </div>
 
   <div class="card">
@@ -118,19 +118,13 @@
 </div>
 <div id="tip"></div>
 
+<script src="data.js"></script>
 <script>
-const DEPTS = [
-  // [name, lead, staff, repetitiveness, pain, leverage, data, willingness, freedom, role]
-  ["Customer Service","Sandra Steiger",41,5,5,4,4,5,4,"🏆 Pilot P1 — champion"],
-  ["Sales & Quotations","Markus Held",38,4,4,5,3,5,3,"Pilot P2 — champion"],
-  ["Production","Bernd Kowalski",260,3,4,5,1,2,2,"Data groundwork first, then Q3"],
-  ["Finance & Controlling","Dr. Anja Feld",21,5,3,3,5,3,4,"Pilot P3"],
-  ["Purchasing","Ali Özdemir",17,4,3,3,3,3,4,"Wave 2 (Q1)"],
-  ["Logistics","Petra Nowak",54,4,3,3,3,2,3,"Wave 2 (Q1/Q2)"],
-  ["Marketing","Julia Brandt",9,3,2,3,3,5,5,"Wave 2 — quick wins"],
-  ["IT","Tobias Renner",14,2,3,3,4,4,3,"Enabler / AI office partner"],
-  ["HR","Christine Weber",12,3,2,2,3,3,1,"Q3 · narrow AI Act scope"]
-];
+// META, DIMS and DEPTS come from data.js — generated from cases/nordwerk/org.yaml
+for (const [k, v] of Object.entries(META)) {
+  const el = document.getElementById("m-" + {employees:"employees",departments:"departments",pilots:"pilots",champions:"champions",days:"days"}[k]);
+  if (el) el.textContent = v;
+}
 const avg = a => a.reduce((x,y)=>x+y,0)/a.length;
 const f1 = n => n.toFixed(1);
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
@@ -192,7 +186,6 @@ drawScatter();
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{drawScatter();drawHeat();});
 
 /* ---------- Heatmap ---------- */
-const DIMS=["Repetitiveness","Pain","Leverage","Data","Willingness","Freedom"];
 function drawHeat(){
   const seq=[css("--seq1"),css("--seq2"),css("--seq3"),css("--seq4"),css("--seq5")];
   const inks=[css("--ink-on-seq1"),css("--ink-on-seq2"),css("--ink-on-seq3"),css("--ink-on-seq4"),css("--ink-on-seq5")];
