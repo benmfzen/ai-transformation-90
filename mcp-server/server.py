@@ -15,6 +15,7 @@ from mcp.server.fastmcp import FastMCP
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import core
+import program
 
 mcp = FastMCP(
     "transformation-os",
@@ -89,6 +90,41 @@ def sync_outputs() -> str:
         capture_output=True, text=True, timeout=30,
     )
     return (result.stdout + result.stderr).strip() or "outputs in sync"
+
+
+@mcp.tool()
+def set_program_start(start_date: str) -> dict:
+    """Set the program's day-1 date (ISO format, e.g. 2026-09-01). Stored in
+    org.yaml so get_todos can compute the current program day automatically."""
+    org = core.load_org()
+    org["program"] = {"start_date": start_date}
+    core.save_org(org)
+    day = program.day_from_start(start_date)
+    return {"start_date": start_date, "current_program_day": day}
+
+
+@mcp.tool()
+def get_todos(program_day: int | None = None) -> dict:
+    """The assistant view for a program day: current phase, this block's to-dos
+    (with template paths), next milestone, phase warning signals, and the live
+    program state (departments scored, recommended pilots) so gaps are visible.
+
+    Omit program_day to compute it from the start date set via set_program_start.
+    """
+    org = core.load_org()
+    if program_day is None:
+        start = (org.get("program") or {}).get("start_date")
+        if not start:
+            return {"error": "no start date set — call set_program_start('YYYY-MM-DD') or pass program_day explicitly"}
+        program_day = program.day_from_start(start)
+    result = program.todos_for_day(program_day)
+    p = core.portfolio_summary(org)
+    result["program_state"] = {
+        "departments_scored": len(p["departments"]),
+        "recommended_pilots": p["recommended_pilots"],
+        "deliberately_postponed": p["build_readiness_first"],
+    }
+    return result
 
 
 @mcp.prompt()

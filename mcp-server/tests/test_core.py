@@ -84,3 +84,35 @@ def test_review_and_fast_track():
     assert "data_protection" in r["required_approvals"]
     r2 = core.check_use_case("summarize public product reviews", data_classes=["public"])
     assert r2["verdict"] == "fast_track"
+
+
+# ---------- program clock ----------
+
+import program  # noqa: E402
+
+
+def test_every_program_day_has_exactly_one_block():
+    for day in range(1, 91):
+        blocks = [b for b in program.BLOCKS if b["days"][0] <= day <= b["days"][1]]
+        assert len(blocks) == 1, f"day {day}: {len(blocks)} blocks"
+
+
+def test_todos_for_key_days():
+    d5 = program.todos_for_day(5)
+    assert d5["phase"]["n"] == 1 and "setup" in d5["current_block"]["title"]
+    assert d5["next_milestone"]["day"] == 30
+    d45 = program.todos_for_day(45)
+    assert d45["phase"]["name"] == "Pilot" and "pilots running" in d45["current_block"]["title"]
+    d90 = program.todos_for_day(90)
+    assert d90["next_milestone"]["in_days"] == 0 and "Board decision" in d90["next_milestone"]["what"]
+
+
+def test_out_of_range_days():
+    assert "starts in" in program.todos_for_day(-2)["status"]
+    assert "over" in program.todos_for_day(120)["status"]
+
+
+def test_day_from_start():
+    from datetime import date
+    assert program.day_from_start("2026-09-01", today=date(2026, 9, 1)) == 1
+    assert program.day_from_start("2026-09-01", today=date(2026, 9, 30)) == 30
