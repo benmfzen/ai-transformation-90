@@ -4,7 +4,7 @@ Interaktive Version mit Tooltips: **[Dashboard](https://benmfzen.github.io/ai-tr
 
 ## Gesamtergebnis
 
-Skala 1–5 · Herleitung und Belege je Score in den [Abteilungsprofilen](../org/abteilungen/) · Methodik im [Scoring-Modell](champion-scoring.md)
+Skala 1–5 · Herleitung und Belege je Score in den [Abteilungsprofilen](abteilungen/) · Methodik im [Scoring-Modell](../../methodik/champion-scoring.md)
 
 | Abteilung | Repetitivität | Schmerz | Hebel | **Impact** | Daten | Bereitschaft | Freiheit | **Readiness** |
 |---|---|---|---|---|---|---|---|---|
@@ -37,7 +37,7 @@ mittel/niedrig 💤  SPÄTER                   ⚡  QUICK WINS / ENABLER
 
 ## Was daraus folgt
 
-**🚀 Jetzt pilotieren (Phase 2):** Kundenservice, Vertrieb, Finanzen — die drei [Piloten P1–P3](../playbook/02-phase-2-pilotieren.md). Steiger und Held werden Champions; Feld ist als konstruktive Skeptikerin der wertvollste Validierungs-Anker.
+**🚀 Jetzt pilotieren (Phase 2):** Kundenservice, Vertrieb, Finanzen — die drei [Piloten P1–P3](../../playbook/02-phase-2-pilotieren.md). Steiger und Held werden Champions; Feld ist als konstruktive Skeptikerin der wertvollste Validierungs-Anker.
 
 **⚡ Quick Wins / Enabler:** Marketing liefert sichtbare kleine Erfolge zwischen den Meilensteinen und stellt die interne Trainerin. IT wird Programmpartner mit Mandat, kein Pilot. Einkauf ist gesetzt für Welle 2.
 
