@@ -52,15 +52,22 @@ def list_portfolio() -> dict:
 
 @mcp.tool()
 def submit_department_scores(department_id: str, name: str, lead: str, staff: int,
-                             scores: dict, evidence: dict, role: str = "") -> dict:
+                             scores: dict, evidence: dict, role: str = "",
+                             source_text: str = "") -> dict:
     """Submit scores for a department (all 6 dimensions, integers 1-5).
 
     EVERY score requires evidence: a verbatim quote from the interview, a metric,
     or a system inspection (>= 20 chars per dimension). Submissions without
     evidence are rejected — that is the method's core rule, enforced.
-    Persists to org.yaml; call sync_outputs afterwards to regenerate outputs.
+
+    ALWAYS pass the interview transcript/notes as source_text when you have them:
+    every quotation-marked span in the evidence is then verified VERBATIM against
+    the source (whitespace/case-insensitive) — fabricated quotes are rejected.
+    Evidence not from the source (a metric, a system inspection) must be prefixed
+    'metric:' or 'system:'. Persists to org.yaml; call sync_outputs afterwards.
     """
-    return core.upsert_department(department_id, name, lead, staff, scores, evidence, role)
+    return core.upsert_department(department_id, name, lead, staff, scores, evidence,
+                                  role, source_text or None)
 
 
 @mcp.tool()
@@ -134,11 +141,14 @@ def interview_debrief(transcript: str) -> str:
 
 1. Call get_scoring_rubric and read the rules and dimension anchors.
 2. Read the transcript below. For each of the 6 dimensions, find the strongest
-   piece of EVIDENCE (verbatim quote or concrete fact). If a dimension has no
+   piece of EVIDENCE — a VERBATIM quote in quotation marks (it will be checked
+   against the transcript character-for-character; paraphrases are rejected) or
+   a concrete fact prefixed 'metric:' / 'system:'. If a dimension has no
    evidence in the transcript, say so and score conservatively — never invent.
 3. Watch for champion signals: does the lead name a concrete, quantified process
    problem? Have they experimented already? Do they carry weight in the org?
-4. Call submit_department_scores with your scores and the evidence per dimension.
+4. Call submit_department_scores with scores, evidence per dimension, and the
+   full transcript as source_text so the quotes are verified.
 5. Call list_portfolio and report where the department lands (quadrant, vs. others)
    and whether your champion assessment changes the pilot recommendation.
 

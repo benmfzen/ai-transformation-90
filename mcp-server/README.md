@@ -43,7 +43,7 @@ claude mcp add transformation-os -- uv run --with "mcp[cli]" --with pyyaml \
 |---|---|
 | `get_scoring_rubric` | The 6 dimensions with 1/5 anchors + the scoring rules |
 | `get_interview_guide` | The 45-min lead-interview guide (12 questions, debrief checklist) |
-| `submit_department_scores` | Persist scores — **rejected without ≥20 chars of evidence per dimension** |
+| `submit_department_scores` | Persist scores — **rejected without ≥20 chars of evidence per dimension**; pass the transcript as `source_text` and every quoted span is **verified verbatim against the source** (fabricated quotes bounce) |
 | `list_portfolio` | Live matrix: impact, readiness, quadrant, recommended pilots, deliberately-postponed list |
 | `draft_decision_memo` | Day-30/60/90 executive memo skeleton, prefilled with the live portfolio |
 | `check_use_case` | Deterministic governance red-line check (AI Act Annex III, Art. 22 GDPR, data classes) → blocked / review_required / fast_track |
@@ -64,5 +64,6 @@ The playbook stops being a document you remember to read and becomes state the a
 ## Design decisions
 
 - **Client reasons, server enforces.** The LLM reads transcripts and argues about scores; the server holds the rubric, validates evidence, computes quadrants and blocks red-line use cases. Policy is code — a persuasive model cannot talk its way past `evaluates_people=true`.
+- **Anti-hallucination by contract.** Unstructured material (transcripts, notes, PDFs read by the client) becomes structured data only through the evidence gate: with `source_text` provided, quoted evidence is substring-verified against the source (typography/whitespace/case-normalized), and non-source evidence must declare itself (`metric:` / `system:`). Garbage in → rejection out, not plausible numbers.
 - **Core logic has zero MCP dependency** ([`core.py`](core.py)) — CI tests it on every push without installing the MCP stack ([`tests/`](tests/)).
 - **Same SSOT as everything else:** scores written here show up in the dashboard after `sync_outputs`. One `org.yaml`, three consumers (dashboard, docs, MCP).
