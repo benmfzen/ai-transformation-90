@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.1 — 2026-07-13
+
+Curation release — presentation over features (per external review: "weniger weiterbauen, mehr präsentieren").
+
+- **Guided tour** in the README: 5 / 15 / 45-minute paths through the repo
+- **Outcome sentence** under the title: what is different after 90 days
+- **[METHOD.md](METHOD.md)** — English executive summaries of the German core artifacts (playbook, champion scoring, pilot charter, governance)
+- **Demo GIF** for the CS Copilot: grounded draft with cited sources, then the deterministic health escalation (closes #6)
+- MCP proof piece reframed benefit-first ("paste a transcript …"), technology second
+- Issue hygiene: #3 closed with shipped-in-v0.4.0 note, #5 rescoped
+
+
 ## v0.4.0 — 2026-07-13
 
 Agentic operations complete: the repo now runs a routine, and scoring gets a second pair of eyes.

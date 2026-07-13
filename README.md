@@ -1,6 +1,8 @@
 # AI Transformation in 90 Days
 
-**A proposed operating system for the first 90 days of an AI transformation lead in a mid-sized company — played out end-to-end on two fictional organizations, with a working prototype, costed business cases and a decentralized operating model.**
+**A proposed operating system for the first 90 days of an AI transformation lead in a mid-sized company — played out end-to-end on two fictional organizations, with working prototypes, costed business cases and a decentralized operating model.**
+
+The outcome after 90 days: **the right opportunities identified from evidence, pilots shipped and measured against frozen baselines, and an operating model that scales beyond the central AI team.**
 
 > ⚠️ All companies, people and numbers in this repo are fictional. The method, the artifacts and the code are real and reusable. Built by [Benjamin Zengler](https://github.com/benmfzen) as a work sample for AI transformation leadership roles.
 
@@ -14,7 +16,15 @@
 | **Commercial judgment** — can you prioritize by business value? | [AI Opportunity Portfolio](cases/natura-foods/portfolio.md) (12 initiatives, efficiency/opportunity split) + [3 costed business cases](cases/natura-foods/README.md#whats-in-this-case) with baselines, payback and honest confidence levels |
 | **Transformation** — can you lead through others? | [Operating model](cases/natura-foods/operating-model.md) (2 central FTE, 10 team leads owning outcomes, RACI, rhythms) + [team lead coaching](cases/natura-foods/team-lead-coaching.md) — from "we want more AI" to a shipped, measured outcome |
 | **Hands-on ability** — can you build? | [CS Copilot prototype](prototypes/cs-copilot/): runnable code, grounded answers with citations, hard escalation rules, **eval harness gating CI** — clone and run it, no API key needed |
-| **Agentic operations** — can you make the method itself operational? | [Transformation OS MCP server](mcp-server/): the playbook as installable tools + 90-day assistant (program clock, evidence verified verbatim against sources). And the [WBR autopilot](prototypes/wbr-autopilot/): **every Monday a GitHub Action drafts the weekly business review and opens a PR** — every figure recomputed before it ships |
+| **Agentic operations** — can you make the method itself operational? | Paste an interview transcript and the [assistant](mcp-server/) extracts evidence, proposes scores, **rejects unsupported claims** and updates the portfolio — the method as an installable toolset (MCP). And [every Monday](prototypes/wbr-autopilot/) a scheduled agent drafts the weekly business review as a PR, every figure recomputed before it ships |
+
+## Guided tour — pick your depth
+
+| You have… | Read/do this |
+|---|---|
+| **5 minutes** | [README](#five-proof-pieces-five-minutes) → [dashboard](https://benmfzen.github.io/ai-transformation-90/) → one [business case](cases/natura-foods/business-cases/cs-copilot.md) |
+| **15 minutes** | \+ run the [CS Copilot](prototypes/cs-copilot/) (`pytest` + eval gates + one query, no API key) → read a [Monday autopilot PR](https://github.com/benmfzen/ai-transformation-90/pulls?q=is%3Apr+wbr) → skim the [method summary (EN)](METHOD.md) |
+| **45 minutes** | \+ connect the [MCP server](mcp-server/) and debrief a transcript → [operating model](cases/natura-foods/operating-model.md) → [portfolio](cases/natura-foods/portfolio.md) → [playbook](playbook/00-programmueberblick.md) (DE) |
 
 ## The core beliefs this repo encodes
 
@@ -59,6 +69,8 @@ docs/           interactive dashboard (GitHub Pages)
 ```
 
 ## Try the prototype (30 seconds, no dependencies)
+
+![CS Copilot demo: grounded draft with cited sources, then a deterministic health escalation](prototypes/cs-copilot/demo.gif)
 
 ```bash
 git clone https://github.com/benmfzen/ai-transformation-90 && cd ai-transformation-90

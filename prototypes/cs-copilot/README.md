@@ -2,6 +2,8 @@
 
 **Grounded customer-service reply drafts with hard escalation rules and an eval harness.** This is the working prototype behind [Pilot 1 of the NATURA case](../../cases/natura-foods/business-cases/cs-copilot.md) — built to be demonstrably safe, measurable and cheap, not to be a product.
 
+![Demo: grounded draft with sources, then a hard health escalation](demo.gif)
+
 ```
 customer message ──► classify ──► retrieve (FAQ + order data) ──► escalation rules
                                                                        │
