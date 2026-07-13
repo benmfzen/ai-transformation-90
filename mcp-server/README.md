@@ -48,8 +48,18 @@ claude mcp add transformation-os -- uv run --with "mcp[cli]" --with pyyaml \
 | `draft_decision_memo` | Day-30/60/90 executive memo skeleton, prefilled with the live portfolio |
 | `check_use_case` | Deterministic governance red-line check (AI Act Annex III, Art. 22 GDPR, data classes) → blocked / review_required / fast_track |
 | `sync_outputs` | Regenerate dashboard + score tables from org.yaml |
+| `set_program_start` | Set day 1 of the engagement (persisted to org.yaml) |
+| `get_todos` | **The assistant view:** current phase, this block's to-dos with templates, next milestone, phase warning signals — cross-checked against the live program state (departments scored, pilots recommended) |
 
 Plus the `interview_debrief` prompt, which wires steps 1–5 above together.
+
+## Using it as your 90-day assistant
+
+Set the start date once (`set_program_start("2026-09-01")`), then the daily loop is a conversation:
+
+> **"What's due this week?"** → `get_todos` knows it's day 22, week 4: finalize scores four-eyes, build the matrix, champion shortlist, prep the day-30 review — and because the live portfolio sits next to it, the model can add *"you've scored 7 of 9 departments; Logistics and HR interviews are still missing before the matrix is defensible."*
+
+The playbook stops being a document you remember to read and becomes state the assistant reasons over.
 
 ## Design decisions
 

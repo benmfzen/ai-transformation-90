@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.3.1 — 2026-07-13
+
+The MCP server becomes a 90-day assistant: a program clock joins the method tools.
+
+- **`get_todos`** — day-addressable playbook: current phase with leading question, this block's to-dos (with template paths), next milestone countdown, phase warning signals — cross-checked against the live program state (departments scored, recommended pilots), so gaps surface in conversation ("2 interviews still missing before day 30")
+- **`set_program_start`** — persists day 1 to org.yaml; `get_todos` then computes the current program day automatically
+- Machine-readable playbook (`mcp-server/program.py`): 9 blocks covering all 90 days exactly once (property-tested), 3 milestones, per-phase warning signals
+
 ## v0.3.0 — 2026-07-13
 
 The method becomes operational: one source of truth for all scores, and the playbook as an installable MCP server.
