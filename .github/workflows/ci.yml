@@ -15,9 +15,11 @@ jobs:
         with:
           python-version: "3.12"
       - name: Unit tests
-        run: pip install pytest && python -m pytest prototypes/cs-copilot/tests/ -q
+        run: pip install pytest pyyaml && python -m pytest prototypes/cs-copilot/tests/ mcp-server/tests/ -q
       - name: Eval harness (quality gates)
         run: python prototypes/cs-copilot/eval/run_eval.py
+      - name: SSOT sync check (org.yaml → dashboard + docs)
+        run: python tools/generate.py --check
 
   links:
     name: Markdown link check

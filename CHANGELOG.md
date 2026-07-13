@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.3.0 — 2026-07-13
+
+The method becomes operational: one source of truth for all scores, and the playbook as an installable MCP server.
+
+- **Single source of truth** — all NORDWERK scores live in `cases/nordwerk/org.yaml`; `tools/generate.py` generates the dashboard data (`docs/data.js`) and the score table in the impact matrix from it. CI fails when outputs drift (`--check`)
+- **Transformation OS MCP server** (`mcp-server/`) — the method as tools for any MCP client: `get_scoring_rubric`, `get_interview_guide`, `submit_department_scores` (**rejects scores without ≥20 chars of evidence per dimension** — the method's core rule enforced in code), `list_portfolio` (live quadrants + pilot recommendation), `draft_decision_memo` (day 30/60/90, prefilled with the live portfolio), `check_use_case` (deterministic AI-Act/GDPR red-line check → blocked/review/fast-track), `sync_outputs`, plus an `interview_debrief` prompt wiring the full flow
+- Core logic is MCP-free and CI-tested (9 tests); dashboard now reads generated `data.js` and fills stat tiles from the same source
+
 ## v0.2.1 — 2026-07-13
 
 Closes the "instruction without artifact" gaps: every playbook to-do now has a fill-in template behind it.
