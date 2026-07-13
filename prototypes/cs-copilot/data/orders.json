@@ -1,0 +1,10 @@
+[
+  {"order_id": "N-1042", "customer": "J. Weber", "status": "shipped", "carrier": "DHL", "tracking": "0034129985", "eta": "2026-07-15", "items": ["Organic Almond Butter 500g", "Trail Mix Classic 1kg"]},
+  {"order_id": "N-1043", "customer": "M. Rossi", "status": "processing", "carrier": null, "tracking": null, "eta": null, "items": ["Dried Mango 1kg"]},
+  {"order_id": "N-1044", "customer": "A. Novak", "status": "delivered", "carrier": "DPD", "tracking": "01445020112", "eta": "2026-07-10", "items": ["Peanut Butter Crunchy 1kg", "Oat Flakes 2kg", "Chia Seeds 500g"]},
+  {"order_id": "N-1045", "customer": "L. Dubois", "status": "delayed", "carrier": "DHL", "tracking": "0034130771", "eta": "2026-07-18", "items": ["Protein Bar Box 24x"]},
+  {"order_id": "N-1046", "customer": "S. Bakker", "status": "shipped", "carrier": "GLS", "tracking": "ZR44810022", "eta": "2026-07-14", "items": ["Cashews Roasted 1kg", "Coconut Chips 300g"]},
+  {"order_id": "N-1047", "customer": "K. Lindgren", "status": "processing", "carrier": null, "tracking": null, "eta": null, "items": ["Granola Chocolate 750g", "Almonds Natural 1kg"]},
+  {"order_id": "N-1048", "customer": "P. Kowalczyk", "status": "delivered", "carrier": "DHL", "tracking": "0034127455", "eta": "2026-07-08", "items": ["Dates Medjool 1kg"]},
+  {"order_id": "N-1049", "customer": "E. Fischer", "status": "shipped", "carrier": "DHL", "tracking": "0034131208", "eta": "2026-07-15", "items": ["Rice Cakes 6x", "Peanut Flips 250g"]}
+]

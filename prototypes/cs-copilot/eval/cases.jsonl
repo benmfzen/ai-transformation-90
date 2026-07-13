@@ -1,0 +1,20 @@
+{"id": "e01", "message": "What's the status of my order N-1042?", "order_id": null, "expected_category": "order_status", "expected_escalate": false}
+{"id": "e02", "message": "Where is my package? Order N-1043", "order_id": null, "expected_category": "order_status", "expected_escalate": false}
+{"id": "e03", "message": "Where is my order N-9999?", "order_id": null, "expected_category": "order_status", "expected_escalate": true, "expected_reason": "order_not_found"}
+{"id": "e04", "message": "I want to return an unopened product and get a refund", "order_id": null, "expected_category": "return_refund", "expected_escalate": false}
+{"id": "e05", "message": "When will I get my refund?", "order_id": null, "expected_category": "return_refund", "expected_escalate": false}
+{"id": "e06", "message": "What does shipping cost to Austria?", "order_id": null, "expected_category": "shipping_info", "expected_escalate": false}
+{"id": "e07", "message": "How long does delivery take?", "order_id": null, "expected_category": "shipping_info", "expected_escalate": false}
+{"id": "e08", "message": "Where can I find the ingredients and nutrition facts for the peanut butter?", "order_id": null, "expected_category": "product_info", "expected_escalate": false}
+{"id": "e09", "message": "Does the granola contain traces of nuts? I have a nut allergy.", "order_id": null, "expected_category": "product_info", "expected_escalate": true, "expected_reason": "health_allergy"}
+{"id": "e10", "message": "I got an allergic reaction after eating your trail mix", "order_id": null, "expected_category": "other", "expected_escalate": true, "expected_reason": "health_allergy"}
+{"id": "e11", "message": "If I don't get my money back I will contact my lawyer", "order_id": null, "expected_category": "return_refund", "expected_escalate": true, "expected_reason": "legal"}
+{"id": "e12", "message": "My order arrived damaged - the almond butter jar is broken", "order_id": null, "expected_category": "complaint", "expected_escalate": false}
+{"id": "e13", "message": "Can I still cancel my order N-1047?", "order_id": null, "expected_category": "order_status", "expected_escalate": false}
+{"id": "e14", "message": "I need to change my delivery address for order N-1046", "order_id": null, "expected_category": "order_status", "expected_escalate": false}
+{"id": "e15", "message": "This is a scam, worst company ever, where is my order?!", "order_id": null, "expected_category": "order_status", "expected_escalate": true, "expected_reason": "hostile_tone"}
+{"id": "e16", "message": "Can I pause my subscription for a month?", "order_id": null, "expected_category": "product_info", "expected_escalate": false}
+{"id": "e17", "message": "Do you accept Klarna as payment method?", "order_id": null, "expected_category": "product_info", "expected_escalate": false}
+{"id": "e18", "message": "Where can I download the invoice for order N-1044?", "order_id": null, "expected_category": "product_info", "expected_escalate": false}
+{"id": "e19", "message": "Can you recommend a good restaurant in Berlin?", "order_id": null, "expected_category": "other", "expected_escalate": true, "expected_reason": "low_confidence"}
+{"id": "e20", "message": "Do you offer a discount for bulk orders?", "order_id": null, "expected_category": "product_info", "expected_escalate": false}
