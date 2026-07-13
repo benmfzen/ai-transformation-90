@@ -1,0 +1,42 @@
+name: WBR Autopilot
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # Mondays 06:00 UTC — draft the weekly business review
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  draft-wbr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate week, draft memo, verify every number
+        id: wbr
+        working-directory: prototypes/wbr-autopilot
+        run: python -m wbr.run_week | tee /dev/stderr | grep '^WEEK_ID=' >> "$GITHUB_OUTPUT"
+
+      - name: Open pull request with the drafted review
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WEEK: ${{ steps.wbr.outputs.WEEK_ID }}
+        run: |
+          BRANCH="wbr/$WEEK"
+          if gh pr list --head "$BRANCH" --state all --json number --jq length | grep -qv '^0$'; then
+            echo "PR for $WEEK already exists — nothing to do"; exit 0
+          fi
+          git config user.name "wbr-autopilot"
+          git config user.email "actions@github.com"
+          git checkout -b "$BRANCH"
+          git add prototypes/wbr-autopilot/data prototypes/wbr-autopilot/outputs
+          git commit -m "WBR draft $WEEK (auto-generated, verified)"
+          git push -u origin "$BRANCH"
+          gh pr create --title "Weekly Business Review — $WEEK (autopilot draft)" \
+            --body "$(printf 'Auto-drafted from this week'\''s extracts. **Every figure recomputed and verified** against the source CSVs (verify.py) before this PR was opened.\n\nMemo: \`prototypes/wbr-autopilot/outputs/wbr-%s.md\`\n\nReview = the analyst step from [business case 3](https://github.com/benmfzen/ai-transformation-90/blob/main/cases/natura-foods/business-cases/weekly-business-review.md): check hypotheses, add judgment, merge to accept.' "$WEEK")"

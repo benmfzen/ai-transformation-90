@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.4.0 — 2026-07-13
+
+Agentic operations complete: the repo now runs a routine, and scoring gets a second pair of eyes.
+
+- **WBR autopilot** (`prototypes/wbr-autopilot/` + `.github/workflows/wbr.yml`) — every Monday 06:00 UTC a GitHub Action generates the week's fictional extracts (deterministic, seeded), detects anomalies by threshold (channel WoW ±15%, ROAS < 1.5, stock cover < 1.5 weeks), drafts the Weekly Business Review ranked by EUR at stake (hypothesis + action + owner per finding) and opens a pull request — the analyst review from business case 3 as a merge decision. `verify.py` recomputes every figure and the anomaly count before the PR opens; tampered or invented numbers block it (tested)
+- **Four-eyes calibration** — `compare_submissions` tool flags dimensions where two independent scorings diverge ≥ 2 (must be resolved with evidence, never averaged), warns when the disagreement flips the portfolio quadrant; `four_eyes_debrief` prompt orchestrates operator-eye + skeptic-eye passes
+- 37 tests across prototypes and MCP core
+
+
 ## v0.3.2 — 2026-07-13
 
 Anti-hallucination gate: evidence quotes are now verified against the source.

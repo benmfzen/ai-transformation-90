@@ -134,6 +134,36 @@ def get_todos(program_day: int | None = None) -> dict:
     return result
 
 
+@mcp.tool()
+def compare_submissions(scores_a: dict, scores_b: dict,
+                        label_a: str = "A", label_b: str = "B") -> dict:
+    """Four-eyes calibration: compare two independent scorings of the same
+    department. Flags dimensions diverging >= 2 points (must be discussed with
+    evidence), shows whether the disagreement flips the portfolio quadrant."""
+    return core.compare_submissions(scores_a, scores_b, label_a, label_b)
+
+
+@mcp.prompt()
+def four_eyes_debrief(transcript: str) -> str:
+    """Debrief an interview with two independent scorers, then calibrate."""
+    return f"""Score this department-lead interview using the four-eyes principle.
+
+1. Call get_scoring_rubric once.
+2. PASS 1 — the operator's eye: score all 6 dimensions giving the lead the
+   benefit of the doubt where evidence is ambiguous. Note evidence per score.
+3. PASS 2 — the skeptic's eye: fresh pass, ignore pass 1. Assume claims are
+   optimistic until a quote or number backs them. Note evidence per score.
+   Do NOT peek at pass 1 while doing this.
+4. Call compare_submissions with both passes.
+5. For every dimension in must_discuss: weigh the evidence explicitly and pick
+   a consensus score — resolve with evidence, never by averaging.
+6. Submit the consensus via submit_department_scores WITH the transcript as
+   source_text, and report where the department lands (list_portfolio).
+
+Transcript:
+{transcript}"""
+
+
 @mcp.prompt()
 def interview_debrief(transcript: str) -> str:
     """Debrief a lead interview into evidence-backed scores."""

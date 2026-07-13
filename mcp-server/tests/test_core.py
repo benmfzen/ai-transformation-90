@@ -167,3 +167,26 @@ def test_without_source_quotes_are_not_checked():
     ev = dict(VERIFIED_EVIDENCE)
     ev["pain"] = '"totally invented but long enough quote here"'
     assert core.validate_submission(GOOD_SCORES, ev, source_text=None) == []
+
+
+# ---------- four-eyes calibration ----------
+
+def test_compare_flags_gaps_and_quadrant_flip():
+    a = {"repetitiveness": 5, "pain": 5, "leverage": 4, "data": 4, "willingness": 5, "freedom": 4}
+    b = {"repetitiveness": 5, "pain": 3, "leverage": 4, "data": 2, "willingness": 5, "freedom": 4}
+    r = core.compare_submissions(a, b, "operator", "skeptic")
+    assert sorted(r["must_discuss"]) == ["data", "pain"]
+    assert not r["calibrated"]
+    assert r["per_dimension"]["pain"]["consensus_default"] == 3
+    assert r["portfolio_effect"]["quadrant_disagreement"] is False
+
+
+def test_compare_calibrated_when_close():
+    a = {"repetitiveness": 4, "pain": 3, "leverage": 4, "data": 3, "willingness": 4, "freedom": 3}
+    b = {d: v - (1 if d == "pain" else 0) for d, v in a.items()}
+    r = core.compare_submissions(a, b)
+    assert r["calibrated"] and r["must_discuss"] == []
+
+
+def test_compare_rejects_incomplete():
+    assert "error" in core.compare_submissions({"pain": 3}, {"pain": 4})
