@@ -34,4 +34,4 @@ Kowalski ist skeptisch bis ablehnend: „Meine Leute sollen Maschinen bedienen, 
 
 ## Verdikt
 
-**Größter Langfrist-Hebel, bewusst vertagt.** Ein Pilot hier würde an der Datenlage scheitern und Kowalskis Skepsis für Jahre zementieren. Stattdessen: Q2 Datenqualitäts-Vorprojekt, Q3 erster Use Case — und zwar der Wissensverlust-Anker, denn das ist das einzige Thema, bei dem Kowalski selbst ein Problem *fühlt*. Betriebsrat von Anfang an am Tisch (Stichwort Leistungskontrolle — die [Richtlinie](../../governance/ai-richtlinie.md) schließt sie explizit aus).
+**Größter Langfrist-Hebel, bewusst vertagt.** Ein Pilot hier würde an der Datenlage scheitern und Kowalskis Skepsis für Jahre zementieren. Stattdessen: Q2 Datenqualitäts-Vorprojekt, Q3 erster Use Case — und zwar der Wissensverlust-Anker, denn das ist das einzige Thema, bei dem Kowalski selbst ein Problem *fühlt*. Betriebsrat von Anfang an am Tisch (Stichwort Leistungskontrolle — die [Richtlinie](../../../governance/ai-richtlinie.md) schließt sie explizit aus).

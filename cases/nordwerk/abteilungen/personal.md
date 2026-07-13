@@ -30,7 +30,7 @@ Weber ist aufgeschlossen, aber die vorsichtigste Gesprächspartnerin beim Thema 
 
 1. Stellenanzeigen-Entwürfe + Zwischenbescheide (kein Screening!) — Q3
 2. Internes Mitarbeiter-FAQ auf Basis der Betriebsvereinbarungen — Q3
-3. ❌ **Explizit ausgeschlossen:** jede Form von Bewerber-Ranking oder -Screening (AI-Act-Hochrisiko, siehe [Richtlinie](../../governance/ai-richtlinie.md))
+3. ❌ **Explizit ausgeschlossen:** jede Form von Bewerber-Ranking oder -Screening (AI-Act-Hochrisiko, siehe [Richtlinie](../../../governance/ai-richtlinie.md))
 
 ## Verdikt
 

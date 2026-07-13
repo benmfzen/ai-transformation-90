@@ -32,7 +32,7 @@ flowchart TD
 
 ## Die 9 Abteilungen mit Scoring-Ergebnis
 
-Vollprofile mit Kerndaten, Head-Einschätzung und Score-Begründung liegen in [`abteilungen/`](abteilungen/). Übersicht (Skala 1–5, Herleitung im [Scoring-Modell](../methodik/champion-scoring.md)):
+Vollprofile mit Kerndaten, Head-Einschätzung und Score-Begründung liegen in [`abteilungen/`](abteilungen/). Übersicht (Skala 1–5, Herleitung im [Scoring-Modell](../../methodik/champion-scoring.md)):
 
 | Abteilung | Head | MA | Impact | Readiness | Rolle im Programm |
 |---|---|---|---|---|---|
@@ -46,4 +46,4 @@ Vollprofile mit Kerndaten, Head-Einschätzung und Score-Begründung liegen in [`
 | [Personal](abteilungen/personal.md) | Christine Weber | 12 | 2,3 | 2,3 | Q3, AI-Act-Scope beachten |
 | [IT](abteilungen/it.md) | Tobias Renner | 14 | 2,7 | 3,7 | Enabler — Partner des AI-Office |
 
-**Lesart:** Kundenservice und Vertrieb kombinieren hohen Hebel mit willigen Heads — dort startet das Programm. Produktion hat langfristig den größten Hebel (260 MA!), aber Papier-Daten und einen skeptischen Head: erst Datenbasis schaffen, dann pilotieren. Details und Quadranten in der [Impact-Matrix](../methodik/impact-matrix.md).
+**Lesart:** Kundenservice und Vertrieb kombinieren hohen Hebel mit willigen Heads — dort startet das Programm. Produktion hat langfristig den größten Hebel (260 MA!), aber Papier-Daten und einen skeptischen Head: erst Datenbasis schaffen, dann pilotieren. Details und Quadranten in der [Impact-Matrix](impact-matrix.md).

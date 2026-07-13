@@ -41,4 +41,4 @@
 
 ---
 
-*Beispiele ausgefüllter Verdikte im Case: [Kundenservice](../org/abteilungen/kundenservice.md), [Vertrieb](../org/abteilungen/vertrieb.md), [Finanzen](../org/abteilungen/finanzen.md).*
+*Beispiele ausgefüllter Verdikte im Case: [Kundenservice](../cases/nordwerk/abteilungen/kundenservice.md), [Vertrieb](../cases/nordwerk/abteilungen/vertrieb.md), [Finanzen](../cases/nordwerk/abteilungen/finanzen.md).*

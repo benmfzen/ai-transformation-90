@@ -34,4 +34,4 @@ Feld ist die analytischste Gesprächspartnerin der Runde — sie will Zahlen seh
 
 ## Verdikt
 
-**Pilot P3.** Nicht der größte Hebel, aber der wertvollste Skeptiker: Wenn Feld am Tag 60 vor der GF sagt „die Zahlen stimmen", ist das mehr wert als jede Begeisterung. Ihre Revisions-Anforderungen fließen direkt in die [AI-Richtlinie](../../governance/ai-richtlinie.md) ein.
+**Pilot P3.** Nicht der größte Hebel, aber der wertvollste Skeptiker: Wenn Feld am Tag 60 vor der GF sagt „die Zahlen stimmen", ist das mehr wert als jede Begeisterung. Ihre Revisions-Anforderungen fließen direkt in die [AI-Richtlinie](../../../governance/ai-richtlinie.md) ein.

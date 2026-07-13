@@ -24,7 +24,7 @@ Jede Abteilung wird auf 6 Dimensionen von 1–5 gescort. Drei bilden den **Impac
 
 ## Scoring-Regeln (damit es objektiv bleibt)
 
-1. **Quelle je Score benennen.** Jeder Wert braucht einen Beleg aus Interview, Kennzahl oder Systemsichtung — „gefühlt 4" zählt nicht. Die Begründungen stehen in den [Abteilungsprofilen](../org/abteilungen/).
+1. **Quelle je Score benennen.** Jeder Wert braucht einen Beleg aus Interview, Kennzahl oder Systemsichtung — „gefühlt 4" zählt nicht. Die Begründungen stehen in den [Abteilungsprofilen](../cases/nordwerk/abteilungen/).
 2. **Vieraugenprinzip.** Zwei Personen scoren unabhängig, Abweichungen ≥ 2 Punkte werden diskutiert und dokumentiert.
 3. **Der Head wird mitgescort, nicht nur die Abteilung.** Veränderungsbereitschaft misst primär die Führungskraft — ein williges Team unter einem blockierenden Head ist nicht ready.
 4. **Worte zählen weniger als Konkretion.** „KI ist wichtig" = schwaches Signal. Ein selbst mitgebrachtes, quantifiziertes Prozessproblem = starkes Signal (siehe Steiger vs. Kowalski im Case).
@@ -46,4 +46,4 @@ Der Champion bekommt dann: einen Piloten mit realistischer Erfolgschance, Sichtb
 - Ein niedriger Score ist **kein Urteil über die Abteilung,** sondern über den richtigen Zeitpunkt. Das muss in jeder Kommunikation mitschwingen, sonst produziert die Matrix Verlierer.
 - Bei sehr kleinen Abteilungen (Marketing, 9 MA) kann Readiness hoch und Impact strukturell niedrig sein → Rolle als Multiplikator statt Pilot.
 
-→ Ergebnis im Case: [Impact-Matrix](impact-matrix.md)
+→ Ergebnis im Case: [Impact-Matrix](../cases/nordwerk/impact-matrix.md)

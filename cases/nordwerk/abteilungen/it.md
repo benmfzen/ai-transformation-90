@@ -34,4 +34,4 @@ Renner ist erleichtert, dass es das Programm gibt: „Ich weiß, dass die Leute 
 
 ## Verdikt
 
-**Kein Pilot — Programmpartner.** IT als „Pilotabteilung" wäre Nabelschau; ihr Wert liegt im Enablement aller anderen. Renner bekommt eine feste Rolle im AI-Office (0,5 FTE ab Phase 3) und das Mandat für Datenzugänge und Tool-Freigaben. Seine Sorge vor „Schatten-IT 2.0" ist der beste interne Verbündete der [Governance](../../governance/ai-richtlinie.md).
+**Kein Pilot — Programmpartner.** IT als „Pilotabteilung" wäre Nabelschau; ihr Wert liegt im Enablement aller anderen. Renner bekommt eine feste Rolle im AI-Office (0,5 FTE ab Phase 3) und das Mandat für Datenzugänge und Tool-Freigaben. Seine Sorge vor „Schatten-IT 2.0" ist der beste interne Verbündete der [Governance](../../../governance/ai-richtlinie.md).

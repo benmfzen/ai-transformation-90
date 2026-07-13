@@ -12,7 +12,7 @@
 - [ ] [AI-Richtlinie](../governance/ai-richtlinie.md) finalisieren und mit Betriebsrat + Datenschutz verabschieden — jetzt, mit echten Pilot-Erfahrungen, nicht abstrakt am Anfang
 - [ ] Tooling-Entscheidung: Was die Piloten wirklich gebraucht haben → Lizenzmodell, Vertrag, Datenverarbeitung klären
 - [ ] Wirtschaftlichkeitsrechnung je Rollout: eingesparte Stunden × Kosten vs. Lizenz- + Betriebskosten (konservativ rechnen, Adoption < 100 % annehmen)
-- [ ] Nächste Welle vorbereiten: Abteilungen 4–6 aus der [Impact-Matrix](../methodik/impact-matrix.md) (im Case: Einkauf, Marketing, Logistik) mit Use-Case-Canvas
+- [ ] Nächste Welle vorbereiten: Abteilungen 4–6 aus der [Impact-Matrix](../cases/nordwerk/impact-matrix.md) (im Case: Einkauf, Marketing, Logistik) mit Use-Case-Canvas
 
 ## Woche 12 (Tag 75–84): Betriebsmodell & Enablement
 
