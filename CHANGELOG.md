@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.3.2 — 2026-07-13
+
+Anti-hallucination gate: evidence quotes are now verified against the source.
+
+- `submit_department_scores` accepts `source_text` (the transcript/notes): every quotation-marked span in the evidence is checked **verbatim** against the source (whitespace-, case- and typography-normalized) — fabricated quotes are rejected with "quote not found verbatim in source"
+- Evidence not from the source must declare itself with a `metric:` or `system:` prefix; unquoted, undeclared evidence is rejected when a source is provided
+- `interview_debrief` prompt updated to always pass the transcript; submission result reports the verification status
+
 ## v0.3.1 — 2026-07-13
 
 The MCP server becomes a 90-day assistant: a program clock joins the method tools.

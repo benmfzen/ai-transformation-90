@@ -116,3 +116,54 @@ def test_day_from_start():
     from datetime import date
     assert program.day_from_start("2026-09-01", today=date(2026, 9, 1)) == 1
     assert program.day_from_start("2026-09-01", today=date(2026, 9, 30)) == 30
+
+
+# ---------- source verification ----------
+
+TRANSCRIPT = """Interview with logistics lead, day 14.
+She said: "Two of my people do almost nothing but match order confirmations
+against purchase orders." On digitization: "We had three digitization projects
+already — two of them created more work than they saved." Ticket volume is
+tracked in the ERP. She sees potential in customs paperwork, quote: "if it
+really works and not just almost".
+"""
+
+VERIFIED_EVIDENCE = {
+    "repetitiveness": 'She said: "Two of my people do almost nothing but match order confirmations against purchase orders."',
+    "pain": '"Two of my people do almost nothing but match order confirmations" — daily, per the lead',
+    "leverage": "metric: 4,100 shipments/month, 15% export share with customs paperwork (ERP report)",
+    "data": "system: ERP and scanners in place, documents heterogeneous (inspection of the ERP module)",
+    "willingness": '"We had three digitization projects already — two of them created more work than they saved."',
+    "freedom": 'Customs has compliance stakes but she is open: "if it really works and not just almost"',
+}
+
+
+def test_verified_quotes_accepted():
+    errors = core.validate_submission(GOOD_SCORES, VERIFIED_EVIDENCE, source_text=TRANSCRIPT)
+    assert errors == []
+
+
+def test_fabricated_quote_rejected():
+    ev = dict(VERIFIED_EVIDENCE)
+    ev["pain"] = '"We are drowning in tickets and everyone is desperate" (interview)'
+    errors = core.validate_submission(GOOD_SCORES, ev, source_text=TRANSCRIPT)
+    assert len(errors) == 1 and "not found verbatim" in errors[0]
+
+
+def test_unquoted_unprefixed_evidence_rejected_with_source():
+    ev = dict(VERIFIED_EVIDENCE)
+    ev["data"] = "the ERP situation seemed pretty solid overall to me"
+    errors = core.validate_submission(GOOD_SCORES, ev, source_text=TRANSCRIPT)
+    assert len(errors) == 1 and "no verifiable quote" in errors[0]
+
+
+def test_typography_and_case_insensitive_matching():
+    ev = dict(VERIFIED_EVIDENCE)
+    ev["willingness"] = "‚we had three digitization   projects already — two of them created MORE work than they saved.'"
+    assert core.validate_submission(GOOD_SCORES, ev, source_text=TRANSCRIPT) == []
+
+
+def test_without_source_quotes_are_not_checked():
+    ev = dict(VERIFIED_EVIDENCE)
+    ev["pain"] = '"totally invented but long enough quote here"'
+    assert core.validate_submission(GOOD_SCORES, ev, source_text=None) == []

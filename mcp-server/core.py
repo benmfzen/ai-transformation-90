@@ -95,7 +95,45 @@ def portfolio_summary(org: dict | None = None) -> dict:
 
 # ---------- evidence-gated score submission ----------
 
-def validate_submission(scores: dict, evidence: dict) -> list:
+import re
+
+QUOTE_RE = re.compile(r'["“„»«\'‘‚]([^"“”„»«\'‘’‚]{12,})["”“«»\'’‘]')
+NON_SOURCE_PREFIXES = ("metric:", "system:")
+MIN_QUOTE_CHARS = 12
+
+
+def _normalize(text: str) -> str:
+    """Whitespace/case/typography-insensitive form for verbatim matching."""
+    text = text.lower()
+    for src, dst in (("’", "'"), ("‘", "'"), ("‚", "'"), ("`", "'"),
+                     ("“", '"'), ("”", '"'), ("„", '"'), ("«", '"'), ("»", '"'),
+                     ("­", ""), ("–", "-"), ("—", "-")):
+        text = text.replace(src, dst)
+    return " ".join(text.split())
+
+
+def verify_against_source(evidence_text: str, source_norm: str) -> str | None:
+    """Check one evidence entry against the source. Returns an error or None.
+
+    Contract: evidence quoting the source must contain the quote in quotation
+    marks — every quoted span is checked VERBATIM (whitespace/case-insensitive).
+    Evidence from outside the source (a metric, a system inspection) must be
+    prefixed 'metric:' or 'system:' to be exempt from verification.
+    """
+    stripped = evidence_text.strip().lower()
+    if stripped.startswith(NON_SOURCE_PREFIXES):
+        return None
+    spans = [s.strip() for s in QUOTE_RE.findall(evidence_text) if len(_normalize(s)) >= MIN_QUOTE_CHARS]
+    if not spans:
+        return ("no verifiable quote: wrap the verbatim source quote in quotation marks, "
+                "or prefix evidence from outside the source with 'metric:' or 'system:'")
+    for span in spans:
+        if _normalize(span) not in source_norm:
+            return f"quote not found verbatim in source: “{span[:80]}”"
+    return None
+
+
+def validate_submission(scores: dict, evidence: dict, source_text: str | None = None) -> list:
     """The core rule of the method, enforced: no score without evidence."""
     errors = []
     for dim in DIMS:
@@ -111,6 +149,10 @@ def validate_submission(scores: dict, evidence: dict) -> list:
                 f"{dim}: evidence required (>= {MIN_EVIDENCE_CHARS} chars) — quote the interview, "
                 f"a metric, or a system inspection. 'Feels like a {scores.get(dim)}' does not count."
             )
+        elif source_text:
+            err = verify_against_source(ev, _normalize(source_text))
+            if err:
+                errors.append(f"{dim}: {err}")
     unknown = set(scores) - set(DIMS)
     if unknown:
         errors.append(f"unknown dimensions: {sorted(unknown)}")
@@ -119,8 +161,9 @@ def validate_submission(scores: dict, evidence: dict) -> list:
 
 def upsert_department(dept_id: str, name: str, lead: str, staff: int,
                       scores: dict, evidence: dict, role: str = "",
+                      source_text: str | None = None,
                       org_path: Path = ORG_PATH, write: bool = True) -> dict:
-    errors = validate_submission(scores, evidence)
+    errors = validate_submission(scores, evidence, source_text)
     if errors:
         return {"accepted": False, "errors": errors}
     org = load_org(org_path)
@@ -153,6 +196,8 @@ def upsert_department(dept_id: str, name: str, lead: str, staff: int,
         "impact": imp,
         "readiness": rea,
         "quadrant": quadrant(imp, rea, org.get("thresholds")),
+        "evidence_verification": "quotes verified verbatim against source" if source_text
+                                 else "no source provided — quotes NOT verified",
         "written_to": str(org_path) if write else None,
         "next_step": "run sync_outputs to regenerate dashboard and score tables",
     }
