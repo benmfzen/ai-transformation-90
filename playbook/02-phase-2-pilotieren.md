@@ -10,7 +10,7 @@
 
 - [ ] Pro Pilot ein [Charter](../templates/pilot-charter.md) unterschreiben lassen: Zielmetrik, Baseline, Abbruchkriterium, Champion, Zeitbudget der Beteiligten
 - [ ] Baseline **vor** dem Start messen (z.B. Ø-Bearbeitungszeit pro Ticket über 2 Wochen rückwirkend) — ohne Baseline ist jedes Ergebnis anfechtbar
-- [ ] Tooling minimal aufsetzen: bestehende Verträge nutzen (M365 Copilot, ChatGPT Team o.ä.), keine Neueinkäufe > 5 T€
+- [ ] Tooling minimal aufsetzen ([Freigabe-Checkliste](../templates/tool-checkliste.md)): bestehende Verträge nutzen (M365 Copilot, ChatGPT Team o.ä.), keine Neueinkäufe > 5 T€
 - [ ] Datenschutz-Kurzcheck je Pilot gegen die [AI-Richtlinie](../governance/ai-richtlinie.md): Welche Daten dürfen rein, welche nicht?
 - [ ] Pilotteams benennen: je 3–5 Personen, freiwillig, vom Champion ausgewählt
 
@@ -32,7 +32,7 @@
 
 ## Woche 9 (Tag 59–60): Pilot-Review
 
-- [ ] Ergebnisse gegen Charter prüfen: Zielmetrik erreicht? Abbruchkriterium gerissen?
+- [ ] Ergebnisse gegen Charter prüfen ([Entscheidungsvorlage Tag 60](../templates/entscheidungsvorlage.md)): Zielmetrik erreicht? Abbruchkriterium gerissen?
 - [ ] Je Pilot eine von drei Entscheidungen: **skalieren / anpassen & verlängern / stoppen**
 - [ ] Champions präsentieren selbst vor der GF — nicht die Programmleitung. (Der Unterschied in der Glaubwürdigkeit ist enorm.)
 - [ ] Lessons Learned dokumentieren: Was braucht Skalierung an Daten, Rechten, Schulung, Support?

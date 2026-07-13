@@ -8,7 +8,7 @@
 
 ## Woche 1 (Tag 1–7): Aufsetzen & Org-Scan
 
-- [ ] Kick-off mit Geschäftsführung: Programmziel, Zeitplan, Entscheidungspunkte (Tag 30/60/90) verbindlich machen
+- [ ] Kick-off mit Geschäftsführung ([Agenda + Deck-Gliederung](../templates/kickoff-agenda.md)): Programmziel, Zeitplan, Entscheidungspunkte (Tag 30/60/90) verbindlich machen
 - [ ] Betriebsrat informieren — **vor** dem ersten Interview, nicht danach
 - [ ] Org-Chart und Kerndaten je Abteilung erheben: Headcount, Kernprozesse, Systeme, bekannte Schmerzpunkte → [Abteilungsprofil-Struktur](../cases/nordwerk/abteilungen/)
 - [ ] Bestandsaufnahme Schatten-KI: Wer nutzt heute schon was? (anonym, straffrei — es geht um ein Lagebild, nicht um Schuldige)
@@ -29,7 +29,7 @@
 - [ ] [Impact-Matrix](../cases/nordwerk/impact-matrix.md) erstellen und Pilotreihenfolge herleiten
 - [ ] Champion-Shortlist: max. 3 Namen, mit Begründung aus den Interviews
 - [ ] Use-Case-Ideen der Top-Abteilungen als [Canvas](../templates/use-case-canvas.md) ausarbeiten (je 1 Seite)
-- [ ] **GF-Review (Tag 30):** Matrix präsentieren, 3 Piloten + Champions beschließen, Phase-2-Budget freigeben
+- [ ] **GF-Review (Tag 30):** Vorlage nach [Entscheidungs-Template](../templates/entscheidungsvorlage.md) 48h vorab verschicken, Matrix präsentieren, 3 Piloten + Champions beschließen, Phase-2-Budget freigeben
 
 ## Abbruch-/Warnsignale in Phase 1
 
