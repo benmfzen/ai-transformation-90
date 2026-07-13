@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NORDWERK · AI-Transformation in 90 Tagen — Dashboard</title>
+<title>NORDWERK · AI Transformation in 90 Days — Dashboard</title>
 <style>
   :root {
     --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
@@ -70,69 +70,69 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>AI-Transformation in 90 Tagen — NORDWERK GmbH</h1>
-    <p class="sub">Programm-Dashboard des Showcase-Projekts: Impact-/Readiness-Scoring aller 9 Abteilungen, Champion-Auswahl und Phasenplan.</p>
-    <span class="badge">Fiktiver Case · Methodik &amp; Daten im <a href="https://github.com/benmfzen/ai-transformation-90">Repo</a></span>
+    <h1>AI Transformation in 90 Days — NORDWERK GmbH</h1>
+    <p class="sub">Program dashboard of the showcase project: impact/readiness scoring of all 9 departments, champion selection and the phase plan.</p>
+    <span class="badge">Fictional case · method &amp; data in the <a href="https://github.com/benmfzen/ai-transformation-90">repo</a></span>
   </header>
 
   <div class="tiles">
-    <div class="tile"><div class="v">520</div><div class="l">Mitarbeitende</div></div>
-    <div class="tile"><div class="v">9</div><div class="l">Abteilungen gescort</div></div>
-    <div class="tile"><div class="v">3</div><div class="l">Piloten (Tag 31–60)</div></div>
-    <div class="tile"><div class="v">2</div><div class="l">Champions identifiziert</div></div>
-    <div class="tile"><div class="v">90</div><div class="l">Tage bis zur Vorstandsentscheidung</div></div>
+    <div class="tile"><div class="v">520</div><div class="l">Employees</div></div>
+    <div class="tile"><div class="v">9</div><div class="l">Departments scored</div></div>
+    <div class="tile"><div class="v">3</div><div class="l">Pilots (day 31–60)</div></div>
+    <div class="tile"><div class="v">2</div><div class="l">Champions identified</div></div>
+    <div class="tile"><div class="v">90</div><div class="l">Days to the board decision</div></div>
   </div>
 
   <div class="card">
-    <h2>Impact-/Readiness-Matrix</h2>
-    <p class="hint">Jeder Punkt eine Abteilung (Hover für Details). Rechts oben wird pilotiert; links oben ist Hebel ohne Reife — dort wird erst Datenbasis aufgebaut.</p>
-    <div class="scroll"><svg id="scatter" viewBox="0 0 760 480" style="min-width:560px;width:100%;height:auto" role="img" aria-label="Streudiagramm Impact gegen Readiness für 9 Abteilungen"></svg></div>
+    <h2>Impact / Readiness Matrix</h2>
+    <p class="hint">One dot per department (hover for details). Top right gets piloted; top left is leverage without readiness — data groundwork comes first there.</p>
+    <div class="scroll"><svg id="scatter" viewBox="0 0 760 480" style="min-width:560px;width:100%;height:auto" role="img" aria-label="Scatter plot of impact versus readiness for 9 departments"></svg></div>
   </div>
 
   <div class="card">
-    <h2>Scoring-Heatmap — 6 Dimensionen × 9 Abteilungen</h2>
-    <p class="hint">Skala 1–5. Impact = Repetitivität · Schmerz · Hebel — Readiness = Datenlage · Bereitschaft · Freiheit. Belege je Score in den Abteilungsprofilen im Repo.</p>
+    <h2>Scoring Heatmap — 6 dimensions × 9 departments</h2>
+    <p class="hint">Scale 1–5. Impact = repetitiveness · pain · leverage — readiness = data · willingness · freedom. Evidence per score lives in the department profiles in the repo.</p>
     <div class="scroll"><table id="heat"></table></div>
-    <div class="legend">niedrig <i style="background:var(--seq1)"></i><i style="background:var(--seq2)"></i><i style="background:var(--seq3)"></i><i style="background:var(--seq4)"></i><i style="background:var(--seq5)"></i> hoch</div>
+    <div class="legend">low <i style="background:var(--seq1)"></i><i style="background:var(--seq2)"></i><i style="background:var(--seq3)"></i><i style="background:var(--seq4)"></i><i style="background:var(--seq5)"></i> high</div>
     <details>
-      <summary>Datentabelle (barrierefreie Ansicht)</summary>
+      <summary>Data table (accessible view)</summary>
       <div class="scroll"><table id="plain" style="margin-top:10px"></table></div>
     </details>
   </div>
 
   <div class="card">
-    <h2>Der 90-Tage-Plan</h2>
-    <p class="hint">Drei Phasen, drei Entscheidungspunkte — an Tag 30, 60 und 90 entscheidet die Geschäftsführung auf Basis von Daten.</p>
+    <h2>The 90-Day Plan</h2>
+    <p class="hint">Three phases, three decision points — on days 30, 60 and 90 the executive team decides based on data.</p>
     <div class="scroll">
-      <div class="tl"><div class="p1">Phase 1 · Verstehen</div><div class="p2">Phase 2 · Pilotieren</div><div class="p3">Phase 3 · Skalieren</div></div>
-      <div class="tl-marks"><span>Tag 1</span><span>Tag 30 · Pilotauswahl</span><span>Tag 60 · Pilot-Review</span><span>Tag 90 · Entscheidung</span></div>
+      <div class="tl"><div class="p1">Phase 1 · Assess</div><div class="p2">Phase 2 · Pilot</div><div class="p3">Phase 3 · Scale</div></div>
+      <div class="tl-marks"><span>Day 1</span><span>Day 30 · pilot selection</span><span>Day 60 · pilot review</span><span>Day 90 · decision</span></div>
       <div class="tl-desc">
-        <div><b>Org-Scan &amp; Scoring</b>9 Head-Interviews, Impact-Matrix, Champion-Shortlist</div>
-        <div><b>3 Piloten mit Charter</b>Kundenservice, Vertrieb, Finanzen — Baseline, Zielmetrik, Abbruchkriterium</div>
-        <div><b>Rollout &amp; Betriebsmodell</b>Governance, Hub-and-Spoke, 12-Monats-Roadmap</div>
+        <div><b>Org scan &amp; scoring</b>9 lead interviews, impact matrix, champion shortlist</div>
+        <div><b>3 pilots with charters</b>Customer service, sales, finance — baseline, target metric, abort criterion</div>
+        <div><b>Rollout &amp; operating model</b>Governance, hub-and-spoke, 12-month roadmap</div>
       </div>
     </div>
   </div>
 
-  <p class="foot">Showcase von <a href="https://github.com/benmfzen">Benjamin Zengler</a> · Firma, Personen und Zahlen sind fiktiv · Playbook, Scoring-Modell und Templates: <a href="https://github.com/benmfzen/ai-transformation-90">github.com/benmfzen/ai-transformation-90</a></p>
+  <p class="foot">Showcase by <a href="https://github.com/benmfzen">Benjamin Zengler</a> · company, people and numbers are fictional · playbook, scoring model and templates: <a href="https://github.com/benmfzen/ai-transformation-90">github.com/benmfzen/ai-transformation-90</a></p>
 </div>
 <div id="tip"></div>
 
 <script>
 const DEPTS = [
-  // [name, head, MA, rep, schmerz, hebel, daten, bereit, frei, rolle]
-  ["Kundenservice","Sandra Steiger",41,5,5,4,4,5,4,"🏆 Pilot P1 — Champion"],
-  ["Vertrieb & Angebote","Markus Held",38,4,4,5,3,5,3,"Pilot P2 — Champion"],
-  ["Produktion","Bernd Kowalski",260,3,4,5,1,2,2,"Vorprojekt Daten, dann Q3"],
-  ["Finanzen & Controlling","Dr. Anja Feld",21,5,3,3,5,3,4,"Pilot P3"],
-  ["Einkauf","Ali Özdemir",17,4,3,3,3,3,4,"Welle 2 (Q1)"],
-  ["Logistik","Petra Nowak",54,4,3,3,3,2,3,"Welle 2 (Q1/Q2)"],
-  ["Marketing","Julia Brandt",9,3,2,3,3,5,5,"Welle 2 — Quick Wins"],
-  ["IT","Tobias Renner",14,2,3,3,4,4,3,"Enabler / AI-Office-Partner"],
-  ["Personal","Christine Weber",12,3,2,2,3,3,1,"Q3 · AI-Act-Scope"]
+  // [name, lead, staff, repetitiveness, pain, leverage, data, willingness, freedom, role]
+  ["Customer Service","Sandra Steiger",41,5,5,4,4,5,4,"🏆 Pilot P1 — champion"],
+  ["Sales & Quotations","Markus Held",38,4,4,5,3,5,3,"Pilot P2 — champion"],
+  ["Production","Bernd Kowalski",260,3,4,5,1,2,2,"Data groundwork first, then Q3"],
+  ["Finance & Controlling","Dr. Anja Feld",21,5,3,3,5,3,4,"Pilot P3"],
+  ["Purchasing","Ali Özdemir",17,4,3,3,3,3,4,"Wave 2 (Q1)"],
+  ["Logistics","Petra Nowak",54,4,3,3,3,2,3,"Wave 2 (Q1/Q2)"],
+  ["Marketing","Julia Brandt",9,3,2,3,3,5,5,"Wave 2 — quick wins"],
+  ["IT","Tobias Renner",14,2,3,3,4,4,3,"Enabler / AI office partner"],
+  ["HR","Christine Weber",12,3,2,2,3,3,1,"Q3 · narrow AI Act scope"]
 ];
 const avg = a => a.reduce((x,y)=>x+y,0)/a.length;
-const f1 = n => n.toFixed(1).replace(".",",");
+const f1 = n => n.toFixed(1);
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 
 const tip = document.getElementById("tip");
@@ -158,24 +158,24 @@ function drawScatter(){
     el("text",{x:X(v),y:H-m.b+18,fill:muted,"font-size":11,"text-anchor":"middle"}).textContent=v;
     el("text",{x:m.l-10,y:Y(v)+4,fill:muted,"font-size":11,"text-anchor":"end"}).textContent=v;
   }
-  // quadrant threshold lines (Readiness 3 / Impact 3,5)
+  // quadrant threshold lines (readiness 3 / impact 3.5)
   el("line",{x1:X(3),y1:m.t,x2:X(3),y2:H-m.b,stroke:axis,"stroke-width":1.5,"stroke-dasharray":"5 4"});
   el("line",{x1:m.l,y1:Y(3.5),x2:W-m.r,y2:Y(3.5),stroke:axis,"stroke-width":1.5,"stroke-dasharray":"5 4"});
   // quadrant labels
   const q=(x,y,t)=>{const e=el("text",{x,y,fill:muted,"font-size":11,"font-weight":600});e.textContent=t;};
-  q(m.l+8,m.t+14,"⚠️ AUFBAUEN"); q(X(3)+10,m.t+14,"🚀 JETZT PILOTIEREN");
-  q(m.l+8,H-m.b-12,"💤 SPÄTER"); q(X(3)+10,H-m.b-12,"⚡ QUICK WINS / ENABLER");
+  q(m.l+8,m.t+14,"⚠️ BUILD FIRST"); q(X(3)+10,m.t+14,"🚀 PILOT NOW");
+  q(m.l+8,H-m.b-12,"💤 LATER"); q(X(3)+10,H-m.b-12,"⚡ QUICK WINS / ENABLERS");
   // axes
   el("line",{x1:m.l,y1:H-m.b,x2:W-m.r,y2:H-m.b,stroke:axis,"stroke-width":1.5});
   el("line",{x1:m.l,y1:m.t,x2:m.l,y2:H-m.b,stroke:axis,"stroke-width":1.5});
-  el("text",{x:(m.l+W-m.r)/2,y:H-8,fill:ink2,"font-size":12,"text-anchor":"middle"}).textContent="Readiness — geht es jetzt?";
+  el("text",{x:(m.l+W-m.r)/2,y:H-8,fill:ink2,"font-size":12,"text-anchor":"middle"}).textContent="Readiness — can it work now?";
   const yl=el("text",{x:16,y:(m.t+H-m.b)/2,fill:ink2,"font-size":12,"text-anchor":"middle"});
-  yl.textContent="Impact — lohnt es sich?"; yl.setAttribute("transform",`rotate(-90 16 ${(m.t+H-m.b)/2})`);
+  yl.textContent="Impact — is it worth it?"; yl.setAttribute("transform",`rotate(-90 16 ${(m.t+H-m.b)/2})`);
   // label offsets per dept to avoid collisions
-  const off={"Kundenservice":[10,-10],"Vertrieb & Angebote":[10,16],"Produktion":[10,-10],
-    "Finanzen & Controlling":[10,16],"Einkauf":[12,-10],"Logistik":[-12,4],
-    "Marketing":[10,4],"IT":[10,-10],"Personal":[10,4]};
-  const offAnchor={"Logistik":"end"};
+  const off={"Customer Service":[10,-10],"Sales & Quotations":[10,16],"Production":[10,-10],
+    "Finance & Controlling":[10,16],"Purchasing":[12,-10],"Logistics":[-12,4],
+    "Marketing":[10,4],"IT":[10,-10],"HR":[10,4]};
+  const offAnchor={"Logistics":"end"};
   DEPTS.forEach(d=>{
     const imp=avg(d.slice(3,6)), rea=avg(d.slice(6,9));
     const cx=X(rea), cy=Y(imp);
@@ -183,7 +183,7 @@ function drawScatter(){
     const [dx,dy]=off[d[0]]||[10,4];
     const t=el("text",{x:cx+dx,y:cy+dy,fill:ink2,"font-size":11.5,"font-weight":600,"text-anchor":offAnchor[d[0]]||"start"});
     t.textContent=d[0];
-    const html=`<b>${d[0]}</b><span class="m">${d[1]} · ${d[2]} MA</span><br>Impact <b style="display:inline">${f1(imp)}</b> · Readiness <b style="display:inline">${f1(rea)}</b><br><span class="m">${d[9]}</span>`;
+    const html=`<b>${d[0]}</b><span class="m">${d[1]} · ${d[2]} staff</span><br>Impact <b style="display:inline">${f1(imp)}</b> · Readiness <b style="display:inline">${f1(rea)}</b><br><span class="m">${d[9]}</span>`;
     c.addEventListener("mousemove",e=>showTip(html,e));
     c.addEventListener("mouseleave",hideTip);
   });
@@ -192,13 +192,13 @@ drawScatter();
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{drawScatter();drawHeat();});
 
 /* ---------- Heatmap ---------- */
-const DIMS=["Repetitivität","Schmerz","Hebel","Datenlage","Bereitschaft","Freiheit"];
+const DIMS=["Repetitiveness","Pain","Leverage","Data","Willingness","Freedom"];
 function drawHeat(){
   const seq=[css("--seq1"),css("--seq2"),css("--seq3"),css("--seq4"),css("--seq5")];
   const inks=[css("--ink-on-seq1"),css("--ink-on-seq2"),css("--ink-on-seq3"),css("--ink-on-seq4"),css("--ink-on-seq5")];
   const heat=document.getElementById("heat");
   const sorted=[...DEPTS].sort((a,b)=>avg(b.slice(3,6))-avg(a.slice(3,6)));
-  let h=`<tr><th>Abteilung</th>${DIMS.map(d=>`<th class="c">${d}</th>`).join("")}<th class="c">Impact</th><th class="c">Readiness</th></tr>`;
+  let h=`<tr><th>Department</th>${DIMS.map(d=>`<th class="c">${d}</th>`).join("")}<th class="c">Impact</th><th class="c">Readiness</th></tr>`;
   sorted.forEach(d=>{
     h+=`<tr><td class="name">${d[0]}</td>`;
     for(let i=3;i<9;i++){const v=d[i];
@@ -212,7 +212,7 @@ function drawHeat(){
   });
   // plain table
   document.getElementById("plain").innerHTML =
-    `<tr><th>Abteilung</th><th>Head</th><th class="c">MA</th>${DIMS.map(d=>`<th class="c">${d}</th>`).join("")}<th class="c">Impact</th><th class="c">Readiness</th><th>Rolle</th></tr>`+
+    `<tr><th>Department</th><th>Lead</th><th class="c">Staff</th>${DIMS.map(d=>`<th class="c">${d}</th>`).join("")}<th class="c">Impact</th><th class="c">Readiness</th><th>Role</th></tr>`+
     sorted.map(d=>`<tr><td>${d[0]}</td><td>${d[1]}</td><td class="c">${d[2]}</td>${d.slice(3,9).map(v=>`<td class="c">${v}</td>`).join("")}<td class="c">${f1(avg(d.slice(3,6)))}</td><td class="c">${f1(avg(d.slice(6,9)))}</td><td>${d[9]}</td></tr>`).join("");
 }
 drawHeat();
