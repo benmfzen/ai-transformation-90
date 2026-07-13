@@ -48,10 +48,11 @@ claude mcp add transformation-os -- uv run --with "mcp[cli]" --with pyyaml \
 | `draft_decision_memo` | Day-30/60/90 executive memo skeleton, prefilled with the live portfolio |
 | `check_use_case` | Deterministic governance red-line check (AI Act Annex III, Art. 22 GDPR, data classes) → blocked / review_required / fast_track |
 | `sync_outputs` | Regenerate dashboard + score tables from org.yaml |
+| `compare_submissions` | Four-eyes calibration: two independent scorings compared, gaps ≥ 2 flagged for evidence-based discussion, quadrant-flip warning |
 | `set_program_start` | Set day 1 of the engagement (persisted to org.yaml) |
 | `get_todos` | **The assistant view:** current phase, this block's to-dos with templates, next milestone, phase warning signals — cross-checked against the live program state (departments scored, pilots recommended) |
 
-Plus the `interview_debrief` prompt, which wires steps 1–5 above together.
+Plus two prompts: `interview_debrief` (wires steps 1–5 above together) and `four_eyes_debrief` (two independent scoring passes — operator's eye and skeptic's eye — calibrated via `compare_submissions`, consensus resolved with evidence, never by averaging).
 
 ## Using it as your 90-day assistant
 

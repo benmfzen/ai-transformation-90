@@ -14,7 +14,7 @@
 | **Commercial judgment** — can you prioritize by business value? | [AI Opportunity Portfolio](cases/natura-foods/portfolio.md) (12 initiatives, efficiency/opportunity split) + [3 costed business cases](cases/natura-foods/README.md#whats-in-this-case) with baselines, payback and honest confidence levels |
 | **Transformation** — can you lead through others? | [Operating model](cases/natura-foods/operating-model.md) (2 central FTE, 10 team leads owning outcomes, RACI, rhythms) + [team lead coaching](cases/natura-foods/team-lead-coaching.md) — from "we want more AI" to a shipped, measured outcome |
 | **Hands-on ability** — can you build? | [CS Copilot prototype](prototypes/cs-copilot/): runnable code, grounded answers with citations, hard escalation rules, **eval harness gating CI** — clone and run it, no API key needed |
-| **Agentic operations** — can you make the method itself operational? | [Transformation OS MCP server](mcp-server/): the playbook as installable tools — evidence-gated scoring, live portfolio, decision memos, governance red-line checks. Scores flow from one `org.yaml` into dashboard, docs and MCP |
+| **Agentic operations** — can you make the method itself operational? | [Transformation OS MCP server](mcp-server/): the playbook as installable tools + 90-day assistant (program clock, evidence verified verbatim against sources). And the [WBR autopilot](prototypes/wbr-autopilot/): **every Monday a GitHub Action drafts the weekly business review and opens a PR** — every figure recomputed before it ships |
 
 ## The core beliefs this repo encodes
 
@@ -45,6 +45,8 @@ cases/
   nordwerk/     DE track: 9 department profiles, impact matrix
 prototypes/
   cs-copilot/   working code: grounded CS drafts, escalation rules, eval gates
+  wbr-autopilot/ scheduled agent: Monday cron drafts the weekly business review
+                as a PR — anomalies ranked by EUR, every number re-verified
 mcp-server/     the method as MCP tools: evidence-gated scoring, portfolio,
                 decision memos, governance checks (core logic CI-tested)
 tools/          generate.py — org.yaml (single source of truth) → dashboard + docs

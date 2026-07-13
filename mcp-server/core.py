@@ -203,6 +203,45 @@ def upsert_department(dept_id: str, name: str, lead: str, staff: int,
     }
 
 
+# ---------- four-eyes calibration ----------
+
+FOUR_EYES_GAP = 2  # the method's rule: independent scores diverging by >= 2 must be discussed
+
+
+def compare_submissions(scores_a: dict, scores_b: dict,
+                        label_a: str = "A", label_b: str = "B") -> dict:
+    """Compare two independent scorings of the same department (four-eyes rule).
+
+    Dimensions diverging by >= 2 points require discussion before a consensus
+    submission; smaller gaps default to the more conservative (lower) score.
+    """
+    for label, s in ((label_a, scores_a), (label_b, scores_b)):
+        missing = [d for d in DIMS if d not in s]
+        if missing:
+            return {"error": f"scorer {label} is missing dimensions: {missing}"}
+    per_dim, discuss = {}, []
+    for d in DIMS:
+        a, b = scores_a[d], scores_b[d]
+        per_dim[d] = {label_a: a, label_b: b, "gap": abs(a - b),
+                      "consensus_default": min(a, b)}
+        if abs(a - b) >= FOUR_EYES_GAP:
+            discuss.append(d)
+    imp_a, rea_a = averages(scores_a)
+    imp_b, rea_b = averages(scores_b)
+    return {
+        "per_dimension": per_dim,
+        "must_discuss": discuss,
+        "calibrated": not discuss,
+        "portfolio_effect": {
+            label_a: {"impact": imp_a, "readiness": rea_a, "quadrant": quadrant(imp_a, rea_a)},
+            label_b: {"impact": imp_b, "readiness": rea_b, "quadrant": quadrant(imp_b, rea_b)},
+            "quadrant_disagreement": quadrant(imp_a, rea_a) != quadrant(imp_b, rea_b),
+        },
+        "rule": f"gaps >= {FOUR_EYES_GAP} must be resolved with evidence, not averaged away; "
+                "undiscussed small gaps default to the conservative score",
+    }
+
+
 # ---------- decision memos ----------
 
 MEMO_FOCUS = {
