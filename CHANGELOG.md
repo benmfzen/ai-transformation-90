@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.4.2 — 2026-07-16
+
+Repositioning: from work sample to **transformation copilot**.
+
+- README leads with the copilot framing ("the method plus the software to run it — swap the fictional org for yours and the copilot runs your program"); proof-piece table reworded from candidate questions to program questions
+- Repo description, dashboard subtitle/footer and ADR wording generalized accordingly; application-specific phrasing removed
+
+
 ## v0.4.1 — 2026-07-13
 
 Curation release — presentation over features (per external review: "weniger weiterbauen, mehr präsentieren").

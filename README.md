@@ -1,22 +1,22 @@
 # AI Transformation in 90 Days
 
-**A proposed operating system for the first 90 days of an AI transformation lead in a mid-sized company — played out end-to-end on two fictional organizations, with working prototypes, costed business cases and a decentralized operating model.**
+**A transformation copilot for the first 90 days of an AI program — a complete method (playbook, opportunity portfolio, costed business cases, operating model) plus the software to run it: an MCP assistant with evidence-gated scoring, working prototypes, and a weekly autopilot.**
 
 The outcome after 90 days: **the right opportunities identified from evidence, pilots shipped and measured against frozen baselines, and an operating model that scales beyond the central AI team.**
 
-> ⚠️ All companies, people and numbers in this repo are fictional. The method, the artifacts and the code are real and reusable. Built by [Benjamin Zengler](https://github.com/benmfzen) as a work sample for AI transformation leadership roles.
+> ⚠️ The two case companies, their people and numbers are fictional. The method, the artifacts and the code are real and reusable — swap the fictional org for yours ([`org.yaml`](cases/nordwerk/org.yaml)) and the copilot runs your program. Built in the open by [Benjamin Zengler](https://github.com/benmfzen).
 
 📊 **[Interactive dashboard](https://benmfzen.github.io/ai-transformation-90/)** (impact matrix, scoring heatmap, 90-day timeline) · 📝 [Changelog](CHANGELOG.md)
 
-## Five proof pieces, five minutes
+## What's inside — five capabilities, five minutes
 
-| What a hiring manager wants to know | Where the answer is |
+| The question | Where the answer is |
 |---|---|
-| **Strategy** — can you structure the first 90 days? | [90-day playbook](playbook/00-programmueberblick.md): 3 phases, decision points at day 30/60/90, abort criteria — no months-long strategy phase |
-| **Commercial judgment** — can you prioritize by business value? | [AI Opportunity Portfolio](cases/natura-foods/portfolio.md) (12 initiatives, efficiency/opportunity split) + [3 costed business cases](cases/natura-foods/README.md#whats-in-this-case) with baselines, payback and honest confidence levels |
-| **Transformation** — can you lead through others? | [Operating model](cases/natura-foods/operating-model.md) (2 central FTE, 10 team leads owning outcomes, RACI, rhythms) + [team lead coaching](cases/natura-foods/team-lead-coaching.md) — from "we want more AI" to a shipped, measured outcome |
-| **Hands-on ability** — can you build? | [CS Copilot prototype](prototypes/cs-copilot/): runnable code, grounded answers with citations, hard escalation rules, **eval harness gating CI** — clone and run it, no API key needed |
-| **Agentic operations** — can you make the method itself operational? | Paste an interview transcript and the [assistant](mcp-server/) extracts evidence, proposes scores, **rejects unsupported claims** and updates the portfolio — the method as an installable toolset (MCP). And [every Monday](prototypes/wbr-autopilot/) a scheduled agent drafts the weekly business review as a PR, every figure recomputed before it ships |
+| **Strategy** — how do the first 90 days get structured? | [90-day playbook](playbook/00-programmueberblick.md): 3 phases, decision points at day 30/60/90, abort criteria — no months-long strategy phase |
+| **Commercial judgment** — how are opportunities prioritized? | [AI Opportunity Portfolio](cases/natura-foods/portfolio.md) (12 initiatives, efficiency/opportunity split) + [3 costed business cases](cases/natura-foods/README.md#whats-in-this-case) with baselines, payback and honest confidence levels |
+| **Transformation** — how do team leads keep ownership? | [Operating model](cases/natura-foods/operating-model.md) (2 central FTE, 10 team leads owning outcomes, RACI, rhythms) + [team lead coaching](cases/natura-foods/team-lead-coaching.md) — from "we want more AI" to a shipped, measured outcome |
+| **Working software** — does any of this actually run? | [CS Copilot prototype](prototypes/cs-copilot/): runnable code, grounded answers with citations, hard escalation rules, **eval harness gating CI** — clone and run it, no API key needed |
+| **The copilot** — can the method itself run as software? | Paste an interview transcript and the [assistant](mcp-server/) extracts evidence, proposes scores, **rejects unsupported claims** and updates the portfolio — the method as an installable toolset (MCP). And [every Monday](prototypes/wbr-autopilot/) a scheduled agent drafts the weekly business review as a PR, every figure recomputed before it ships |
 
 ## Guided tour — pick your depth
 
@@ -40,7 +40,7 @@ The outcome after 90 days: **the right opportunities identified from evidence, p
 |---|---|---|
 | Business | Omnichannel food (D2C + retail), ~350 people | Industrial machinery SME, 520 people |
 | Focus | Commercial portfolio, business cases, operating model, buy/build/deprecate, **prototype** | Org scan, champion scoring, change management (works council, shop-floor skepticism), dashboard |
-| Why it exists | The environment consumer/e-commerce roles operate in | Where the method was first played through end-to-end |
+| Why it exists | A consumer/e-commerce program environment | Where the method was first played through end-to-end |
 
 Same method underneath ([playbook](playbook/), [scoring](methodik/champion-scoring.md), [templates](templates/)) — two very different organizations, which is the point ([ADR-001](decisions/adr-001-two-case-tracks.md)).
 

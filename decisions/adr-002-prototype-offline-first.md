@@ -4,7 +4,7 @@
 
 ## Context
 
-The CS Copilot prototype must be runnable by anyone cloning the repo (recruiters, reviewers, CI) — most of whom have no API key — while still demonstrating real LLM integration.
+The CS Copilot prototype must be runnable by anyone cloning the repo (reviewers, adopters, CI) — most of whom have no API key — while still demonstrating real LLM integration.
 
 ## Decision
 
